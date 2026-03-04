@@ -1,0 +1,161 @@
+[
+    {
+        "insightId": "ins_001_inv_anomaly",
+        "type": "inventory_anomaly",
+        "severity": "critical",
+        "message": "Wireless Earbuds Pro has zero inventory but your Google Ads campaign is spending $420 per day targeting this product. You're paying for clicks that lead to dead ends.",
+        "detail": "Product SKU-WEP-BLK currently shows 0 units available across all locations. Your active 'Audio Essentials' campaign has a daily budget of $420 targeting this product. Estimated revenue loss from stockout: $1,840 over the next 4 days based on current conversion rate.",
+        "affectedProductUcpIds": [
+            "google-merchant::SKU-WEP-BLK",
+            "google-merchant::SKU-WEP-WHT"
+        ],
+        "impactValue": {
+            "amount": 1840,
+            "currency": "USD"
+        },
+        "recommendedActions": [
+            {
+                "action": "Pause 'Audio Essentials' campaign until restock is confirmed",
+                "confidence": 0.97,
+                "estimatedImpact": "Save $420/day in wasted ad spend"
+            },
+            {
+                "action": "Create an urgent restock purchase order for Wireless Earbuds Pro",
+                "confidence": 0.91,
+                "estimatedImpact": "Recover $1,840 in lost revenue within 4 days"
+            }
+        ],
+        "acknowledged": false,
+        "ucpId": "google-merchant::insight::ins_001",
+        "ucpVersion": "1.0",
+        "sourceId": "ins_001_inv_anomaly",
+        "sourcePlatform": "goofre-insight-engine",
+        "normalizedAt": "2026-03-04T10:00:00Z",
+        "generatedAt": {
+            "iso8601": "2026-03-04T10:00:00Z",
+            "epochMs": 1741082400000
+        },
+        "expiresAt": {
+            "iso8601": "2026-03-06T10:00:00Z",
+            "epochMs": 1741255200000
+        }
+    },
+    {
+        "insightId": "ins_002_ad_opportunity",
+        "type": "ad_spend_opportunity",
+        "severity": "high",
+        "message": "Your Organic Cotton T-Shirt is your best-converting product this week at 8.2% conversion rate, but your ad budget is 60% allocated to lower-performing SKUs.",
+        "detail": "Product 'Organic Cotton T-Shirt (SKU-OCT-NAT)' achieved 8.2% conversion rate vs. 2.1% portfolio average. Current ad budget allocation: 12% ($84/day). Recommended allocation based on ROAS: 35% ($245/day). 312 units in stock — sufficient runway for increased demand.",
+        "affectedProductUcpIds": [
+            "google-merchant::SKU-OCT-NAT"
+        ],
+        "impactValue": {
+            "amount": 3200,
+            "currency": "USD"
+        },
+        "recommendedActions": [
+            {
+                "action": "Increase 'Organic Cotton T-Shirt' campaign budget from $84 to $245 per day",
+                "confidence": 0.88,
+                "estimatedImpact": "Projected $3,200 additional revenue over next 7 days"
+            },
+            {
+                "action": "Reduce budget on 'Bundle Deal' campaign — ROAS below 1.2x threshold",
+                "confidence": 0.82,
+                "estimatedImpact": "Recover $160/day in underperforming spend"
+            }
+        ],
+        "acknowledged": false,
+        "ucpId": "google-merchant::insight::ins_002",
+        "ucpVersion": "1.0",
+        "sourceId": "ins_002_ad_opportunity",
+        "sourcePlatform": "goofre-insight-engine",
+        "normalizedAt": "2026-03-04T10:00:00Z",
+        "generatedAt": {
+            "iso8601": "2026-03-04T10:05:00Z",
+            "epochMs": 1741082700000
+        },
+        "expiresAt": {
+            "iso8601": "2026-03-07T10:00:00Z",
+            "epochMs": 1741341600000
+        }
+    },
+    {
+        "insightId": "ins_003_stockout_risk",
+        "type": "stockout_risk",
+        "severity": "high",
+        "message": "Running Shoes (Size 10) will stock out in approximately 6 days at current sell-through rate, but your lead time from the supplier is 14 days.",
+        "detail": "Current inventory for SKU-RS-SZ10: 47 units. Average daily sell-through rate (last 14 days): 7.8 units/day. Projected stockout: March 10, 2026. Supplier lead time: 14 days. Recommended reorder quantity based on demand forecast: 120 units.",
+        "affectedProductUcpIds": [
+            "google-merchant::SKU-RS-SZ10"
+        ],
+        "impactValue": {
+            "amount": 5640,
+            "currency": "USD"
+        },
+        "recommendedActions": [
+            {
+                "action": "Submit purchase order for 120 units of Running Shoes Size 10 TODAY",
+                "confidence": 0.95,
+                "estimatedImpact": "Prevent $5,640 in lost revenue from 8-day stockout gap"
+            },
+            {
+                "action": "Enable 'Pre-Order' mode on product listing to capture demand during restock",
+                "confidence": 0.72,
+                "estimatedImpact": "Retain 30-40% of demand during stockout period"
+            }
+        ],
+        "acknowledged": false,
+        "ucpId": "google-merchant::insight::ins_003",
+        "ucpVersion": "1.0",
+        "sourceId": "ins_003_stockout_risk",
+        "sourcePlatform": "goofre-insight-engine",
+        "normalizedAt": "2026-03-04T10:00:00Z",
+        "generatedAt": {
+            "iso8601": "2026-03-04T10:08:00Z",
+            "epochMs": 1741082880000
+        },
+        "expiresAt": {
+            "iso8601": "2026-03-10T10:00:00Z",
+            "epochMs": 1741601200000
+        }
+    },
+    {
+        "insightId": "ins_004_margin_compression",
+        "type": "margin_compression",
+        "severity": "medium",
+        "message": "Your ad cost per unit sold has increased 34% this month while your average selling price held flat — your net margin on the Electronics category is being squeezed.",
+        "detail": "Electronics category: Average CPA rose from $8.20 to $11.00 (+34%). Average order value held at $67.40. Net margin compression: 3.9 percentage points. Primary driver: click cost inflation in 'Smart Home' and 'Audio' subcategories.",
+        "affectedProductUcpIds": [],
+        "impactValue": {
+            "amount": 890,
+            "currency": "USD"
+        },
+        "recommendedActions": [
+            {
+                "action": "Switch Electronics campaigns to Target ROAS bidding (set ROAS goal: 4.5x)",
+                "confidence": 0.79,
+                "estimatedImpact": "Stabilize margin within 2 weeks — estimated $890/month recovery"
+            },
+            {
+                "action": "Review and exclude low-performing search terms driving up CPA",
+                "confidence": 0.85,
+                "estimatedImpact": "Reduce CPA by 15-20% within 7 days"
+            }
+        ],
+        "acknowledged": false,
+        "ucpId": "google-merchant::insight::ins_004",
+        "ucpVersion": "1.0",
+        "sourceId": "ins_004_margin",
+        "sourcePlatform": "goofre-insight-engine",
+        "normalizedAt": "2026-03-04T10:00:00Z",
+        "generatedAt": {
+            "iso8601": "2026-03-04T10:12:00Z",
+            "epochMs": 1741083120000
+        },
+        "expiresAt": {
+            "iso8601": "2026-03-11T10:00:00Z",
+            "epochMs": 1741688400000
+        }
+    }
+]

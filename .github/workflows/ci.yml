@@ -1,0 +1,115 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint-and-typecheck:
+    name: Lint & Type Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Type Check
+        run: npx tsc --noEmit
+
+  test:
+    name: Integration Tests
+    runs-on: ubuntu-latest
+    needs: lint-and-typecheck
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run integration tests
+        run: npx jest tests/integration/ --ci --coverage
+
+      - name: Upload coverage
+        uses: codecov/codecov-action@v4
+        if: always()
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+  build:
+    name: Build Packages
+    runs-on: ubuntu-latest
+    needs: lint-and-typecheck
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build core-engine
+        run: cd packages/core-engine && npm run build
+
+      - name: Build plugins
+        run: cd packages/plugins && npm run build
+
+  mock-server-health:
+    name: Mock Server Smoke Test
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci && cd packages/mock-server && npm ci
+
+      - name: Start mock server in background
+        run: npx ts-node packages/mock-server/src/server.ts &
+        env:
+          PORT: 3001
+
+      - name: Wait for server
+        run: npx wait-on http://localhost:3001/health --timeout 15000
+
+      - name: Health check
+        run: |
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:3001/health)
+          if [ "$STATUS" != "200" ]; then echo "Health check failed: $STATUS" && exit 1; fi
+
+      - name: Insights endpoint check
+        run: |
+          RESPONSE=$(curl -s http://localhost:3001/api/insights)
+          echo "$RESPONSE" | python3 -c "import sys,json; data=json.load(sys.stdin); assert len(data) > 0, 'Empty insights array'"
+          echo "✓ /api/insights returns $(echo $RESPONSE | python3 -c "import sys,json; print(len(json.load(sys.stdin)))"  ) insights"

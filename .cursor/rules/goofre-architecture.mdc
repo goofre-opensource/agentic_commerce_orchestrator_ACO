@@ -1,0 +1,90 @@
+---
+description: Goofre ACO architectural rules — enforced for all AI-assisted code in this repository
+globs: ["packages/**/*.ts", "tests/**/*.ts"]
+alwaysApply: true
+---
+
+# Goofre ACO Architecture Rules
+
+You are working in the **Goofre Agentic Commerce Orchestrator (ACO)** — a headless TypeScript engine for Unified Commerce Protocol (UCP) orchestration.
+
+## Mandatory Rules (always enforce)
+
+### 1. UCP Schema Types — The Only Output Contract
+All data emitted from the orchestration pipeline MUST be one of:
+- `UCPProduct` — product catalog entity
+- `UCPInventorySnapshot` — point-in-time inventory state
+- `UCPOrderEvent` — order lifecycle event
+- `UCPInsight` — AI-generated actionable intelligence
+
+Never emit `any`, `object`, or platform-native types.
+
+### 2. SwitchboardOrchestrator Is The Only Gateway
+```typescript
+// CORRECT
+await orchestrator.process({ pluginId: 'my-plugin', eventType: 'product', payload: raw });
+
+// WRONG — never bypass the orchestrator
+consumer.receive(rawPlatformData);
+```
+
+### 3. Plugin Interface Contract
+Every new data source MUST implement `IGoofRePlugin`:
+```typescript
+export class MyPlugin implements IGoofRePlugin {
+  readonly id = 'my-platform';    // unique, kebab-case
+  readonly version = '1.0.0';
+  async normalizeProduct(raw: unknown): Promise<UCPProduct> { ... }
+}
+```
+
+### 4. UCPId Format
+```typescript
+ucpId: `${plugin.id}::${sourceId}` // e.g. "google-merchant::SKU-001"
+```
+
+### 5. Zero UI Code
+Never generate React, Vue, Angular components, HTML, or CSS files.
+This repo is headless — all UI belongs in Repo B (Merchant Dashboard PWA).
+
+### 6. Imports — Always from Barrel
+```typescript
+// ALWAYS import from the package barrel, never from internal paths
+import type { UCPProduct, IGoofRePlugin } from '@goofre/core-engine';
+import { SwitchboardOrchestrator } from '@goofre/core-engine';
+```
+
+### 7. No Floating Promises
+```typescript
+// WRONG
+orchestrator.process(event);
+
+// CORRECT
+await orchestrator.process(event);
+// or
+void orchestrator.process(event).catch(handleError);
+```
+
+### 8. Strict TypeScript
+- `no-explicit-any` is a lint error — use `unknown` for untyped inputs
+- All functions need explicit return types
+- Use `exactOptionalPropertyTypes` — never assign `undefined` to optional fields
+
+## Plugin File Location
+```
+packages/plugins/src/{platform}/{PlatformName}Plugin.ts
+```
+
+## Core File Locations
+```
+packages/core-engine/src/types/ucp.schema.ts          ← UCP Type definitions
+packages/core-engine/src/orchestrator/SwitchboardOrchestrator.ts
+packages/core-engine/src/orchestrator/PosSyncEngine.ts
+packages/core-engine/src/webhooks/WebhookProcessor.ts
+```
+
+## Mock Server Rules
+- No real API calls — synthetic data only
+- Serve UCPInsight[] at `GET /api/insights`
+- Port: 3001
+- Use JSON fixtures from `packages/mock-server/src/data/`
