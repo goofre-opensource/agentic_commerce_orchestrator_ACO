@@ -6,7 +6,8 @@
     "workspaces": [
         "packages/core-engine",
         "packages/plugins",
-        "packages/mock-server"
+        "packages/mock-server",
+        "apps/dashboard-lite"
     ],
     "scripts": {
         "build": "npm run build --workspaces",
@@ -55,12 +56,12 @@
     "author": "Goofre, Inc.",
     "repository": {
         "type": "git",
-        "url": "https://github.com/goofre-oss/agentic_commerce_orchestrator_ACO.git"
+        "url": "https://github.com/goofre-opensource/agentic_commerce_orchestrator_ACO.git"
     },
     "bugs": {
-        "url": "https://github.com/goofre-oss/agentic_commerce_orchestrator_ACO/issues"
+        "url": "https://github.com/goofre-opensource/agentic_commerce_orchestrator_ACO/issues"
     },
-    "homepage": "https://github.com/goofre-oss/agentic_commerce_orchestrator_ACO#readme",
+    "homepage": "https://github.com/goofre-opensource/agentic_commerce_orchestrator_ACO#readme",
     "keywords": [
         "commerce",
         "ucp",
