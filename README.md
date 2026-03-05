@@ -2,7 +2,7 @@
 
 <img src="./assets/logo.png" alt="Goofre Logo" width="200" height="200" />
 
-<h1>⚡ Agentic Commerce Orchestrator</h1>
+<h1>Goofre - Agentic Commerce Orchestrator</h1>
 
 <img src="https://img.shields.io/github/actions/workflow/status/goofre-opensource/agentic_commerce_orchestrator_ACO/ci.yml?branch=main&style=for-the-badge" alt="Build Status" />
 <img src="https://img.shields.io/badge/coverage-94%25-brightgreen.svg?style=for-the-badge" alt="Coverage" />
