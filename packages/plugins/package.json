@@ -25,7 +25,7 @@
     },
     "devDependencies": {
         "@goofre/core-engine": "*",
-        "@types/node": "^20.0.0",
+        "@types/node": "^25.3.4",
         "typescript": "^5.3.0"
     }
 }
