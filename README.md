@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./assets/logo.png" alt="Goofre Logo" width="400" height="400" />
+<img src="./assets/logo.jpg" alt="Goofre Logo" width="400" height="400" />
 
 <h1>Goofre - Agentic Commerce Orchestrator</h1>
 
