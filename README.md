@@ -6,7 +6,7 @@
 
 <img src="https://img.shields.io/github/actions/workflow/status/goofre-opensource/agentic_commerce_orchestrator_ACO/ci.yml?branch=main&style=for-the-badge" alt="Build Status" />
 <img src="https://img.shields.io/badge/coverage-94%25-brightgreen.svg?style=for-the-badge" alt="Coverage" />
-<img src="https://img.shields.io/npm/v/@goofre/core-engine?style=for-the-badge" alt="NPM Version" />
+<img src="https://img.shields.io/badge/npm-v0.1.0--alpha-blue?style=for-the-badge" alt="NPM Version" />
 <img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" alt="MIT License" />
 
 <br /><br />
