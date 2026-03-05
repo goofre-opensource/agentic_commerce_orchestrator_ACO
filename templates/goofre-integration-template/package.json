@@ -1,0 +1,9 @@
+{
+  "name": "goofre-plugin-template",
+  "version": "1.0.0",
+  "description": "Template for creating independent Goofre ACO plugins",
+  "main": "index.js",
+  "dependencies": {
+    "@goofre/interfaces": "latest"
+  }
+}

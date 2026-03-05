@@ -1,0 +1,18 @@
+name: Bug Report
+description: Create a report to help us improve Goofre
+labels: ['bug']
+body:
+  - type: textarea
+    id: reproducibility
+    attributes:
+      label: Reproducible Steps
+      description: How can we reproduce this? Please provide step-by-step instructions.
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: OS Version
+      description: What operating system and version are you using?
+    validations:
+      required: true
