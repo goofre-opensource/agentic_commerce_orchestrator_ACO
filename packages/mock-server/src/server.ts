@@ -125,7 +125,7 @@ app.get('/api/insights', (_req: Request, res: Response) => {
  * Human-in-the-loop: Merchant acknowledges an insight via the Voice Agent.
  */
 app.post('/api/insights/:id/ack', (req: Request, res: Response) => {
-    const { id } = req.params;
+    const id = req.params['id']!;
     acknowledgedInsightIds.add(id);
     console.info(`[mock-server] Insight acknowledged: ${id}`);
     res.json({ success: true, insightId: id, acknowledgedAt: new Date().toISOString() });

@@ -4,10 +4,6 @@ import type {
     UCPEvent,
     UCPEventEnvelope,
     UCPEventType,
-    UCPProduct,
-    UCPInventorySnapshot,
-    UCPOrderEvent,
-    UCPInsight,
 } from '../types/ucp.schema.js';
 
 // Re-export RawEvent locally
@@ -96,7 +92,7 @@ export class SwitchboardOrchestrator extends EventEmitter {
 
         // Fire-and-forget the lifecycle hook
         if (plugin.onRegister) {
-            plugin.onRegister(this).catch((err: unknown) => {
+            void plugin.onRegister(this).catch((err: unknown) => {
                 console.error(`[Switchboard] Plugin "${plugin.id}" onRegister failed:`, err);
             });
         }
@@ -193,7 +189,7 @@ export class SwitchboardOrchestrator extends EventEmitter {
                         `Plugin "${plugin.id}" does not implement normalizeProduct()`
                     );
                 }
-                return plugin.normalizeProduct(event.payload) as Promise<UCPProduct>;
+                return plugin.normalizeProduct(event.payload);
             }
             case 'inventory': {
                 if (!plugin.normalizeInventory) {
@@ -201,7 +197,7 @@ export class SwitchboardOrchestrator extends EventEmitter {
                         `Plugin "${plugin.id}" does not implement normalizeInventory()`
                     );
                 }
-                return plugin.normalizeInventory(event.payload) as Promise<UCPInventorySnapshot>;
+                return plugin.normalizeInventory(event.payload);
             }
             case 'order': {
                 if (!plugin.normalizeOrder) {
@@ -209,7 +205,7 @@ export class SwitchboardOrchestrator extends EventEmitter {
                         `Plugin "${plugin.id}" does not implement normalizeOrder()`
                     );
                 }
-                return plugin.normalizeOrder(event.payload) as Promise<UCPOrderEvent>;
+                return plugin.normalizeOrder(event.payload);
             }
             case 'insight': {
                 throw new Error(

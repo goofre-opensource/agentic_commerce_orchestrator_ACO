@@ -9,7 +9,7 @@ module.exports = {
     'prettier',
   ],
   parserOptions: {
-    project: './tsconfig.json',
+    project: ['./tsconfig.json'],
     tsconfigRootDir: __dirname,
   },
   rules: {
@@ -23,6 +23,8 @@ module.exports = {
     // Plugin development standards
     '@typescript-eslint/consistent-type-imports': 'error',
     '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    // Disabled: fires on interface-implementing async methods with no internal await
+    '@typescript-eslint/require-await': 'off',
   },
   env: {
     node: true,

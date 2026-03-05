@@ -1,4 +1,5 @@
 import type { IGoofRePlugin, UCPProduct, UCPInventorySnapshot } from '@goofre/core-engine';
+import { createHmac } from 'crypto';
 
 // ─── Google Merchant Center Raw Types ────────────────────────────────────────
 
@@ -89,9 +90,9 @@ export class GoogleMerchantPlugin implements IGoofRePlugin {
             normalizedAt: new Date().toISOString(),
 
             title: gmc.title,
-            description: gmc.description,
-            brand: gmc.brand,
-            category: gmc.productTypes,
+            ...(gmc.description !== undefined && { description: gmc.description }),
+            ...(gmc.brand !== undefined && { brand: gmc.brand }),
+            ...(gmc.productTypes !== undefined && { category: gmc.productTypes }),
             status: isAvailable ? 'active' : 'inactive',
 
             price: {
@@ -116,9 +117,9 @@ export class GoogleMerchantPlugin implements IGoofRePlugin {
                 locationId: `merchant::${this.merchantId}`,
             },
 
-            imageUrls: gmc.imageLink ? [gmc.imageLink] : undefined,
-            gtin: gmc.gtin,
-            mpn: gmc.mpn,
+            ...(gmc.imageLink !== undefined && { imageUrls: [gmc.imageLink] }),
+            ...(gmc.gtin !== undefined && { gtin: gmc.gtin }),
+            ...(gmc.mpn !== undefined && { mpn: gmc.mpn }),
         };
     }
 
@@ -159,7 +160,6 @@ export class GoogleMerchantPlugin implements IGoofRePlugin {
      * Google signs webhooks using HMAC-SHA1 with the subscription's push token.
      */
     validateWebhookSignature(payload: Buffer, signature: string, secret: string): boolean {
-        const { createHmac } = require('crypto') as typeof import('crypto');
         const expected = createHmac('sha1', secret).update(payload).digest('base64');
         return expected === signature;
     }

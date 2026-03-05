@@ -133,10 +133,11 @@ describe('SwitchboardOrchestrator Integration', () => {
 describe('Mock Server Contract', () => {
     test('insights fixture has required UCPInsight fields', async () => {
         // Inline the fixture validation — confirms JSON contract
-        const insights: Array<Record<string, unknown>> = await import(
+        const module = await import(
             '../../packages/mock-server/src/data/insights.json',
             { assert: { type: 'json' } }
-        ).then((m) => m.default as Array<Record<string, unknown>>);
+        );
+        const insights = module.default as Array<Record<string, unknown>>;
 
         expect(insights.length).toBeGreaterThan(0);
 

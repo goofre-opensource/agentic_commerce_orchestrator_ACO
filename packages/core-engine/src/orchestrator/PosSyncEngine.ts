@@ -193,9 +193,11 @@ export class PosSyncEngine {
 
     private scheduleFlush(): void {
         if (!this.running) return;
-        this.flushTimer = setTimeout(async () => {
-            await this.flush();
-            this.scheduleFlush();
+        this.flushTimer = setTimeout(() => {
+            void (async () => {
+                await this.flush();
+                this.scheduleFlush();
+            })();
         }, this.config.flushIntervalMs);
     }
 
