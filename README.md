@@ -2,7 +2,7 @@
 
 <img src="./assets/logo.jpg" alt="Goofre Logo" width="400" height="400" />
 
-<h1>Goofre - Agentic Commerce Orchestrator</h1>
+<h1>Goofre: The Agentic Commerce Orchestrator (ACO)</h1>
 
 <img src="https://img.shields.io/github/actions/workflow/status/goofre-opensource/agentic_commerce_orchestrator_ACO/ci.yml?branch=main&style=for-the-badge" alt="Build Status" />
 <img src="https://img.shields.io/badge/coverage-94%25-brightgreen.svg?style=for-the-badge" alt="Coverage" />
@@ -11,41 +11,41 @@
 
 <br /><br />
 
-<p><strong>The premier Agentic Commerce Orchestrator (ACO) for Composable Architects.</strong><br/>
-Stop building fragile point-to-point API integrations.<br/>
-Start speaking the language AI agents actually understand.</p>
+<p>Empowering e-commerce developers to command the agentic future. <br/>
+Bypass platform lock-in. Orchestrate Google's commerce stack directly for your merchants.</p>
 
-[**Live Demo**](https://goofre.io) · [**Quickstart (2 min)**](#-2-minute-quickstart) · [**Architecture**](#-how-it-works) · [**Build a Plugin**](#-build-a-plugin-in-60-seconds) · [**API Docs**](#-api-reference) · [**Discord**](#-community)
+[**Website**](https://goofre.io) · [**Quickstart (2 min)**](#-the-two-minute-quick-start) · [**Architecture**](#-how-it-works) · [**API Docs**](#-api-reference) · [**Discord**](#-community)
 
 </div>
 
 ---
 
-## The Problem
+## The Problem: The Agentic Shift
 
-Every e-commerce platform speaks a different language. WooCommerce, Shopify, Square, custom ERP — each has its own product schema, inventory format, and webhook shape. Your engineering team has written _(and re-written)_ dozens of brittle integrations to glue them together.
+E-commerce is undergoing a massive, two-front disruption that is dismantling the last two decades of industry standards:
 
-Now you want AI agents to act on this data — but Gemini, GPT-4, and Claude weren't designed to parse seven conflicting catalog formats.
+1. **The Conversational Migration:** Consumer shopping is rapidly migrating from traditional website storefronts to conversational interfaces inside Gemini, ChatGPT, Copilot, and Claude.
+2. **The Platform Black Box:** Legacy e-commerce platforms are transforming into closed, fully automated black boxes to sell "convenience" directly to merchants.
 
-**There is a better way.**
+This raises an existential question: **Where does the custom e-commerce developer fit when the platform becomes autonomous and the storefront becomes a chat window?**
 
 ---
 
-## The Solution: Unified Commerce Protocol (UCP)
+## The Solution: Become the Orchestrator
 
-The Agentic Commerce Orchestrator (ACO) is a **headless orchestration engine** that normalizes all your commerce data into a single, strictly-typed protocol designed natively for AI consumption.
+Goofre elevates developers from mere integrators to true **Agentic Commerce Orchestrators**.
 
-```
-Raw Platform Data (any format) → ACO Engine → UCP Schema (AI-ready) → Gemini/Any LLM
-```
+Acting as a high-performance switchboard, Goofre wires directly into the massive infrastructure of Google’s business and commerce solutions—the underlying foundation of the Unified Commerce Protocol (UCP). It enables you to orchestrate agentic commerce workflows without any reliance on third-party e-commerce platforms or website builders.
 
-| Without ACO                                    | With ACO                                                                 |
-| ---------------------------------------------- | ------------------------------------------------------------------------ |
-| N point-to-point integrations                  | One UCP pipeline                                                         |
-| Inconsistent field names, types, currencies    | Strict TypeScript schemas — always predictable                           |
-| LLM agents require custom parsing per platform | Any LLM reads UCP natively — zero prompt engineering for data formatting |
-| Webhook handling duplicated per vendor         | Unified HMAC-validated webhook processor                                 |
-| Inventory sync breaks on schema changes        | PosSyncEngine absorbs upstream changes                                   |
+With Goofre, you own the infrastructure. You can bundle, optimize, and deliver AI-native commerce and marketing services directly to your merchants, entirely on your terms.
+
+### How It Works: Harnessing the Google Stack
+
+Google Search, Chrome, and Gemini serve billions of active users daily, making them the ultimate discovery and conversion engines. Goofre leverages this by turning Google Merchant Center (GMC) into your core Product Information Management (PIM) and orchestration hub.
+
+- **One-Way Data Synchronization:** Goofre seamlessly syncs raw SKU and catalog data from legacy e-commerce platforms directly into GMC.
+- **Intelligent Diagnostics:** The orchestrator autonomously identifies, flags, and brings your attention to critical feed issues or policy violations within GMC so you can fix them proactively.
+- **Full-Spectrum Orchestration:** Beyond the catalog, Goofre orchestrates the merchant's entire agentic lifecycle—powering dynamic advertising, sales optimization, automated customer service, and real-time inventory management directly through Google's unified ecosystem.
 
 ---
 
@@ -63,11 +63,16 @@ The setup comes with a local zero-dependency SQLite database out-of-the-box, aut
 
 ---
 
-## 📜 The Goofre Manifesto
+## The Goofre Manifesto: Engineering Sovereignty
 
-**Engineering Sovereignty.**
+We believe that e-commerce developers are the true architects of modern retail. Goofre exists to grant them absolute technical sovereignty.
 
-For too long, engineering teams have been beholden to the whims of monolithic commerce vendors, spending endless sprints migrating between generic schema structures. We believe your commerce layer should be inherently yours—extensible, typed, and independent. The Agentic Commerce Orchestrator restores your operational sovereignty while preparing your data for an AI-native future.
+1. **We build orchestrators, not platforms.** We do not dictate where your data lives; we give you the power to command it.
+2. **True Independence.** We empower developers to become independent orchestrators, delivering platform-free, AI-native commerce experiences directly to their merchants.
+3. **Agent-First Architecture.** The future of commerce is agentic. We provide the robust, Google-stack-powered infrastructure necessary to build systems that act, decide, and optimize autonomously.
+4. **No Vendor Lock-In.** Your merchants' data, workflows, and logic belong to them, orchestrated by you.
+
+Build without boundaries. Orchestrate the future.
 
 ---
 
