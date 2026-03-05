@@ -1,0 +1,13 @@
+{
+  "name": "create-goofre-ucp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "bin": {
+    "create-goofre-ucp": "./bin/init.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {},
+  "license": "MIT"
+}

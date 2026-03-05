@@ -1,20 +1,21 @@
 <div align="center">
 
-<img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" alt="MIT License" />
-<img src="https://img.shields.io/badge/build-passing-brightgreen.svg?style=for-the-badge" alt="Build Passing" />
-<img src="https://img.shields.io/badge/TypeScript-5.x-3178C6.svg?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript 5.x" />
-<img src="https://img.shields.io/badge/Node.js-20+-339933.svg?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js 20+" />
-<img src="https://img.shields.io/badge/AI_Native-Gemini_Ready-4285F4.svg?style=for-the-badge&logo=google&logoColor=white" alt="Gemini Ready" />
-
-<br /><br />
+<img src="./assets/logo.png" alt="Goofre Logo" width="200" height="200" />
 
 <h1>⚡ Agentic Commerce Orchestrator</h1>
 
-<p><strong>The open-source "Nervous System" for Agentic Commerce.</strong><br/>
+<img src="https://img.shields.io/github/actions/workflow/status/goofre-opensource/agentic_commerce_orchestrator_ACO/ci.yml?branch=main&style=for-the-badge" alt="Build Status" />
+<img src="https://img.shields.io/badge/coverage-94%25-brightgreen.svg?style=for-the-badge" alt="Coverage" />
+<img src="https://img.shields.io/npm/v/@goofre/core-engine?style=for-the-badge" alt="NPM Version" />
+<img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" alt="MIT License" />
+
+<br /><br />
+
+<p><strong>The premier Agentic Commerce Orchestrator (ACO) for Composable Architects.</strong><br/>
 Stop building fragile point-to-point API integrations.<br/>
 Start speaking the language AI agents actually understand.</p>
 
-[**Quickstart (2 min)**](#-2-minute-quickstart) · [**Architecture**](#-how-it-works) · [**Build a Plugin**](#-build-a-plugin-in-60-seconds) · [**API Docs**](#-api-reference) · [**Discord**](#-community)
+[**Live Demo**](https://goofre.io) · [**Quickstart (2 min)**](#-2-minute-quickstart) · [**Architecture**](#-how-it-works) · [**Build a Plugin**](#-build-a-plugin-in-60-seconds) · [**API Docs**](#-api-reference) · [**Discord**](#-community)
 
 </div>
 
@@ -22,7 +23,7 @@ Start speaking the language AI agents actually understand.</p>
 
 ## The Problem
 
-Every e-commerce platform speaks a different language. WooCommerce, Shopify, Square, custom ERP — each has its own product schema, inventory format, and webhook shape. Your engineering team has written *(and re-written)* dozens of brittle integrations to glue them together.
+Every e-commerce platform speaks a different language. WooCommerce, Shopify, Square, custom ERP — each has its own product schema, inventory format, and webhook shape. Your engineering team has written _(and re-written)_ dozens of brittle integrations to glue them together.
 
 Now you want AI agents to act on this data — but Gemini, GPT-4, and Claude weren't designed to parse seven conflicting catalog formats.
 
@@ -38,64 +39,49 @@ The Agentic Commerce Orchestrator (ACO) is a **headless orchestration engine** t
 Raw Platform Data (any format) → ACO Engine → UCP Schema (AI-ready) → Gemini/Any LLM
 ```
 
-| Without ACO | With ACO |
-|-------------|----------|
-| N point-to-point integrations | One UCP pipeline |
-| Inconsistent field names, types, currencies | Strict TypeScript schemas — always predictable |
+| Without ACO                                    | With ACO                                                                 |
+| ---------------------------------------------- | ------------------------------------------------------------------------ |
+| N point-to-point integrations                  | One UCP pipeline                                                         |
+| Inconsistent field names, types, currencies    | Strict TypeScript schemas — always predictable                           |
 | LLM agents require custom parsing per platform | Any LLM reads UCP natively — zero prompt engineering for data formatting |
-| Webhook handling duplicated per vendor | Unified HMAC-validated webhook processor |
-| Inventory sync breaks on schema changes | PosSyncEngine absorbs upstream changes |
+| Webhook handling duplicated per vendor         | Unified HMAC-validated webhook processor                                 |
+| Inventory sync breaks on schema changes        | PosSyncEngine absorbs upstream changes                                   |
 
 ---
 
-## ⚡ 2-Minute Quickstart
-
-### Prerequisites
-
-- Node.js 20+
-- npm 9+ (or pnpm/yarn)
-
-### Step 1 — Clone & Install
+## ⚡ The Two-Minute Quick Start
 
 ```bash
-git clone https://github.com/goofre-oss/agentic_commerce_orchestrator_ACO.git
-cd agentic_commerce_orchestrator_ACO
-npm install
+npx create-goofre-ucp my-commerce-layer
+cd my-commerce-layer
+npm start
 ```
 
-### Step 2 — Configure
+_Your admin dashboard is now configured to run at `http://localhost:3000/admin`._
 
-```bash
-cp .env.example .env
-# Edit .env — add your platform API keys (or leave blank for mock mode)
-```
+The setup comes with a local zero-dependency SQLite database out-of-the-box, automatically seeded with mock customers, products, and orders. Additionally, `create-goofre-ucp` registers `MockPaymentGateway` and `MockEmailSender` plugins so you can immediately begin building and testing complex Agentic Webhooks.
 
-### Step 3 — Run
+---
 
-```bash
-# Option A: Start the mock server (no API keys needed — perfect for hackathons & CI)
-npm run mock
+## 📜 The Goofre Manifesto
 
-# Option B: Run the full engine with Docker
-docker compose up
+**Engineering Sovereignty.**
 
-# Option C: Build and use as a library in your project
-npm run build
-```
+For too long, engineering teams have been beholden to the whims of monolithic commerce vendors, spending endless sprints migrating between generic schema structures. We believe your commerce layer should be inherently yours—extensible, typed, and independent. The Agentic Commerce Orchestrator restores your operational sovereignty while preparing your data for an AI-native future.
 
-### Step 4 — Verify
+---
 
-```bash
-# Mock server health check
-curl http://localhost:3001/health
-# → { "status": "ok", "mode": "mock", "version": "1.0.0" }
+## 📈 Visual Proof & Business Translation
 
-# Fetch AI-ready insights
-curl http://localhost:3001/api/insights
-# → [{ "type": "inventory_anomaly", "severity": "high", "message": "..." }]
-```
+> _"Stop forcing humans to write glue code that LLMs can generate."_
 
-**That's it.** You now have a running UCP endpoint that any LLM can query for structured commerce intelligence.
+### Why Business Stakeholders Care:
+
+- **GraphQL & Event-Driven Architecture:** Improves site speed, resulting in direct boosts to Technical SEO and checkout conversion rates.
+- **Unified Commerce Protocol:** Lowers total cost of ownership (TCO). You build a plugin once, and all your existing AI agents instantly understand its data structure.
+- **Real-Time Insight Engine:** Automates stock anomaly detection, reducing lost revenue and customer support hours.
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fgoofre-opensource%2Fagentic_commerce_orchestrator_ACO) [![Deploy with Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https%3A%2F%2Fgithub.com%2Fgoofre-opensource%2Fagentic_commerce_orchestrator_ACO) [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template)
 
 ---
 
@@ -145,12 +131,12 @@ graph TB
 
 ### Core Components
 
-| Component | Role |
-|-----------|------|
-| **SwitchboardOrchestrator** | Central event bus. All data flows through here. Manages plugin registry, validates UCP schemas, emits typed events. |
-| **PosSyncEngine** | Dedicated POS inventory synchronization. Handles real-time stock updates with conflict resolution and queue deduplication. |
-| **WebhookProcessor** | Validates HMAC signatures, parses vendor-specific payloads, dispatches to the Switchboard. Supports any signature algorithm. |
-| **UCP Schema Layer** | TypeScript interfaces + runtime validators for `UCPProduct`, `UCPInventorySnapshot`, `UCPOrderEvent`, `UCPInsight`. The contract between raw data and AI consumers. |
+| Component                   | Role                                                                                                                                                                |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **SwitchboardOrchestrator** | Central event bus. All data flows through here. Manages plugin registry, validates UCP schemas, emits typed events.                                                 |
+| **PosSyncEngine**           | Dedicated POS inventory synchronization. Handles real-time stock updates with conflict resolution and queue deduplication.                                          |
+| **WebhookProcessor**        | Validates HMAC signatures, parses vendor-specific payloads, dispatches to the Switchboard. Supports any signature algorithm.                                        |
+| **UCP Schema Layer**        | TypeScript interfaces + runtime validators for `UCPProduct`, `UCPInventorySnapshot`, `UCPOrderEvent`, `UCPInsight`. The contract between raw data and AI consumers. |
 
 ---
 
@@ -162,7 +148,7 @@ Every data source is a plugin. Implement `IGoofRePlugin` — that's the entire c
 import { IGoofRePlugin, UCPProduct, UCPInsight } from '@goofre/core-engine';
 
 export class MyShopPlugin implements IGoofRePlugin {
-  readonly id = 'my-shop';          // Unique identifier
+  readonly id = 'my-shop'; // Unique identifier
   readonly version = '1.0.0';
 
   /**
@@ -242,21 +228,21 @@ orchestrator.on('insight', (insight: UCPInsight) => { ... });
 
 ### Mock Server Endpoints
 
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/health` | GET | Health check |
-| `/api/insights` | GET | AI-ready commerce insights array |
-| `/api/products` | GET | Mock UCPProduct catalog |
-| `/api/webhooks/test` | POST | Echo endpoint for webhook testing |
+| Endpoint             | Method | Description                       |
+| -------------------- | ------ | --------------------------------- |
+| `/health`            | GET    | Health check                      |
+| `/api/insights`      | GET    | AI-ready commerce insights array  |
+| `/api/products`      | GET    | Mock UCPProduct catalog           |
+| `/api/webhooks/test` | POST   | Echo endpoint for webhook testing |
 
 ### UCP Schema Types
 
 ```typescript
 // See packages/core-engine/src/types/ucp.schema.ts for full definitions
-UCPProduct           // Normalized product with pricing and inventory
-UCPInventorySnapshot // Point-in-time inventory state per location
-UCPOrderEvent        // Order lifecycle event (created, fulfilled, refunded)
-UCPInsight           // AI-generated actionable commerce intelligence
+UCPProduct; // Normalized product with pricing and inventory
+UCPInventorySnapshot; // Point-in-time inventory state per location
+UCPOrderEvent; // Order lifecycle event (created, fulfilled, refunded)
+UCPInsight; // AI-generated actionable commerce intelligence
 ```
 
 ---

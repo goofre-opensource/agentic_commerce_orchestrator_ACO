@@ -30,7 +30,7 @@ jobs:
         run: npm run lint
 
       - name: Type Check
-        run: npx tsc --noEmit
+        run: npm run typecheck
 
   test:
     name: Integration Tests
@@ -49,7 +49,7 @@ jobs:
         run: npm ci
 
       - name: Run integration tests
-        run: npx jest tests/integration/ --ci --coverage
+        run: npm run test -- --ci --coverage
 
       - name: Upload coverage
         uses: codecov/codecov-action@v4
@@ -73,11 +73,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build core-engine
-        run: cd packages/core-engine && npm run build
-
-      - name: Build plugins
-        run: cd packages/plugins && npm run build
+      - name: Build All Packages
+        run: npm run build
 
   mock-server-health:
     name: Mock Server Smoke Test

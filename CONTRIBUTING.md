@@ -1,88 +1,37 @@
-# Contributing to Goofre ACO
+# Contributing to Goofre
 
-Thank you for your interest in contributing to the **Agentic Commerce Orchestrator** — the open-source "Nervous System" for Agentic Commerce.
+Thank you for your interest in Goofre!
 
-## Core Architectural Constraint
+## The Goofre Quality Standard (Mainline Lockdown)
 
-> **All contributions must be headless.** This repository contains zero UI code and zero proprietary dashboard logic. Every module must implement or extend the UCP (Unified Commerce Protocol) schema layer.
+Goofre enforces an elite, zero-tolerance standard for code quality, built by Antigravity.
+The `main` branch is **strictly locked**.
 
----
+- **NO direct commits to `main` are allowed.**
+- All changes **MUST** go through a Pull Request.
+- PRs **MUST** pass all CI/CD integration tests, type checks, and linting rules.
+- You **MUST** have at least one peer approval before merging.
 
-## How to Contribute
+### Shift-Left Quality (Pre-commit)
 
-### 1. Plugin Development (Most Impactful)
-The fastest way to add value is building a new data source plugin.
-
-A plugin maps third-party commerce data to a canonical UCP schema type:
-
-```typescript
-import { IGoofRePlugin, UCPProduct } from '@goofre/core-engine';
-
-export class MyPlugin implements IGoofRePlugin {
-  readonly id = 'my-platform';
-  readonly version = '1.0.0';
-
-  async normalizeProduct(raw: unknown): Promise<UCPProduct> {
-    // Transform raw platform data into UCP-compliant schema
-  }
-}
-```
-
-**Supported target schemas:** `UCPProduct` | `UCPInventorySnapshot` | `UCPOrderEvent` | `UCPInsight`
-
-### 2. Core Engine Improvements
-- Bug fixes to SwitchboardOrchestrator routing logic
-- Performance improvements to PosSyncEngine queue processing
-- New WebhookProcessor HMAC signature strategies
-
----
-
-## Development Setup
+We employ `husky` and `lint-staged` to catch errors locally. You should not physically be able to commit code that fails strict type checking and linting.
+If you want to simulate our GitHub Actions pipeline locally before pushing, simply run:
 
 ```bash
-git clone https://github.com/goofre-oss/agentic_commerce_orchestrator_ACO
-cd agentic_commerce_orchestrator_ACO
-npm install
-npm run build
-npm test
+npm run validate
 ```
 
 ---
 
-## Code Standards
+## Architectural Principle
 
-| Rule | Requirement |
-|------|-------------|
-| TypeScript | Strict mode, no `any` types — use UCP schema types |
-| Tests | All new features require a Jest unit test |
-| Linting | `npm run lint` must pass before submitting |
-| Commits | Follow [Conventional Commits](https://www.conventionalcommits.org/) |
-| Docs | JSDoc on all exported public APIs |
+Goofre is a _pure orchestrator_. We do **NOT** accept Pull Requests adding third-party plugins (e.g., Stripe, Shopify, Magento) directly into the core engine repository.
 
----
+If you want to build an integration, please use the `templates/goofre-integration-template` and release it independently in your own repository or package.
 
-## Pull Request Checklist
+We gladly welcome non-code contributions, including:
 
-- [ ] My plugin/feature implements the correct `IGoofRePlugin` interface
-- [ ] All output data conforms to a UCP schema type — no raw `object` or `any`
-- [ ] I've added/updated JSDoc comments on exported APIs
-- [ ] `npm run lint` passes
-- [ ] `npm test` passes
-- [ ] No UI code, no dashboard-specific logic in this PR
-
----
-
-## Commit Convention
-
-```
-feat(plugins): add Shopify product normalization plugin
-fix(orchestrator): resolve race condition in concurrent event processing
-docs(readme): add plugin development quickstart
-test(webhooks): add HMAC validation edge case coverage
-```
-
----
-
-## Security Vulnerabilities
-
-Please do not file public issues for security bugs. See [SECURITY.md](./SECURITY.md).
+- Documentation improvements
+- Issue triaging
+- Bug reports with reproducible steps
+- Community support on Discord
