@@ -19,7 +19,13 @@
         "forceConsistentCasingInFileNames": true,
         "resolveJsonModule": true,
         "esModuleInterop": true,
-        "skipLibCheck": true
+        "skipLibCheck": true,
+        "baseUrl": ".",
+        "paths": {
+            "@goofre/core-engine": [
+                "packages/core-engine/src/index.ts"
+            ]
+        }
     },
     "include": [
         "packages/*/src/**/*",
