@@ -104,7 +104,7 @@ graph TB
         A[Google Merchant Center]
         B[Point of Sale System]
         C[Custom ERP / Webhook]
-        D[Your Plugin]
+        D[Google Commerce-Centric Stack]
     end
 
     subgraph "ACO Core Engine"
