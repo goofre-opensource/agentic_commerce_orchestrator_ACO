@@ -16,6 +16,14 @@ Bypass platform lock-in. Orchestrate Google's commerce stack directly for your m
 
 [**Website**](https://goofre.io) · [**Quickstart (2 min)**](#-the-two-minute-quick-start) · [**Architecture**](#-how-it-works) · [**API Docs**](#-api-reference) · [**Discord**](#-community)
 
+### Instant Deploy
+
+Launch your independent orchestrator in under two minutes:
+
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template?template=https://github.com/goofre-opensource/goofre)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/goofre-opensource/goofre)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/goofre-opensource/goofre)
+
 </div>
 
 ---
