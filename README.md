@@ -92,6 +92,8 @@ Goofre doesn't just improve developer experience; it fundamentally rewrites the 
 - **Turnkey Agentic Commerce:** Future-proof merchants instantly. Goofre seamlessly orchestrates Google's powerful, natively integrated commerce stack (Search, Merchant Center, Gemini) to drive tangible, automated business results without relying on a passive website.
 - **Scale Without Store-Building:** Stop wasting hundreds of development hours designing, testing, and maintaining fragile website templates. Deploy, manage, and scale intelligent agentic commerce workflows across multiple merchants directly from a single Goofre orchestrator instance.
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fgoofre-opensource%2Fagentic_commerce_orchestrator_ACO) [![Deploy with Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https%3A%2F%2Fgithub.com%2Fgoofre-opensource%2Fagentic_commerce_orchestrator_ACO) [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template)
+
 ---
 
 ## 🏗 How It Works
@@ -125,13 +127,13 @@ flowchart TB
         end
 
         subgraph ORCHESTRATION["Orchestration"]
-            SW["SwitchboardOrchestrator\n(Central Event Bus\n· Plugin Registry\n· Timeout Guard)"]
+            SW["SwitchboardOrchestrator\nCentral Router"]
             OTE["OTEn Engine\n(State Machine)"]
             SL["State Lock\n(Concurrency Guard)"]
             OTE --> SL
         end
 
-        subgraph SCHEMA["UCP Schema Layer  ·  Runtime Validation"]
+        subgraph SCHEMA["UCP Schema Validator\nStrict Type Enforcement"]
             P["UCPProduct\n(variants, GTIN, MPN)"]
             IS["UCPInventorySnapshot\n(delta, reason, location)"]
             OE["UCPOrderEvent\n(6 lifecycle events)"]
@@ -227,10 +229,7 @@ flowchart TB
     end
 
     %% ─── CONNECTIONS ────────────────────────────────────────────────────────────
-    ERP --> WH
-    POS --> PS
-    GMC --> GP --> SW
-    GCCS --> SW
+    GMC & POS & ERP & GCCS --> SW
     CHECKOUT --> SW
 
     SW --> GOOGLE
