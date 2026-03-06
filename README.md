@@ -14,7 +14,7 @@
 <p>Empowering e-commerce developers to command the agentic future. <br/>
 Bypass platform lock-in. Orchestrate Google's commerce stack directly for your merchants.</p>
 
-[**Website**](https://goofre.io) · [**Quickstart (2 min)**](#-the-two-minute-quick-start) · [**Architecture**](#-how-it-works) · [**API Docs**](#-api-reference) · [**Discord**](#-community)
+[**Quickstart (2 min)**](#-the-two-minute-quick-start) · [**Architecture**](#-how-it-works) · [**API Docs**](#-api-reference) · [**Discord**](#-community) · [**Website**](https://goofre.io)
 
 ### Instant Deploy
 
