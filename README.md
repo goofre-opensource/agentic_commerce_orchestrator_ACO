@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./assets/logo_rectangular.jpg" alt="Goofre Logo" width="600" />
+<img src="./assets/logo.jpg" alt="Goofre Logo" width="400" height="400" />
 
 <h1>Goofre: The Agentic Commerce Orchestrator (ACO)</h1>
 
@@ -99,160 +99,45 @@ Goofre doesn't just improve developer experience; it fundamentally rewrites the 
 ## 🏗 How It Works
 
 ```mermaid
-flowchart TB
-    %% ─── INPUT SOURCES ─────────────────────────────────────────────────────────
-    subgraph INPUT["🔌 Data Sources"]
-        direction TB
-        GMC["Google Merchant Center"]
-        POS["Point of Sale System"]
-        ERP["Custom ERP / Webhook"]
-        GCCS["Google Commerce-Centric Stack"]
+graph TB
+    subgraph "Data Sources"
+        A[Google Merchant Center]
+        B[Point of Sale System]
+        C[Custom ERP / Webhook]
+        D[Your Plugin]
     end
 
-    %% ─── UCP CHECKOUT ──────────────────────────────────────────────────────────
-    subgraph CHECKOUT["🛒 UCP Checkout Layer"]
-        direction TB
-        CO_API["Checkout API\nEndpoint"]
-        APY["APay / Payments\nGateway Adapter"]
-        CO_API --> APY
+    subgraph "ACO Core Engine"
+        E[WebhookProcessor<br/>HMAC Validation]
+        F[SwitchboardOrchestrator<br/>Central Router]
+        G[PosSyncEngine<br/>Inventory Queue]
+        H[UCP Schema Validator<br/>Strict Type Enforcement]
     end
 
-    %% ─── GOOFRE CORE ENGINE ────────────────────────────────────────────────────
-    subgraph CORE["⚙️ Goofre Core Engine  ·  @goofre/core-engine"]
-        direction LR
-
-        subgraph INGEST["Ingestion"]
-            WH["WebhookProcessor\n(HMAC Validation)"]
-            PS["PosSyncEngine\n(Inventory Queue\n+ Deduplication)"]
-        end
-
-        subgraph ORCHESTRATION["Orchestration"]
-            SW["SwitchboardOrchestrator\nCentral Router"]
-            OTE["OTEn Engine\n(State Machine)"]
-            SL["State Lock\n(Concurrency Guard)"]
-            OTE --> SL
-        end
-
-        subgraph SCHEMA["UCP Schema Validator\nStrict Type Enforcement"]
-            P["UCPProduct\n(variants, GTIN, MPN)"]
-            IS["UCPInventorySnapshot\n(delta, reason, location)"]
-            OE["UCPOrderEvent\n(6 lifecycle events)"]
-            IN["UCPInsight\n(8 insight types\n· severity · impact)"]
-        end
-
-        WH --> SW
-        PS --> SW
-        SW --> OTE
-        SW --> P & IS & OE & IN
+    subgraph "UCP Protocol Output"
+        I[UCPProduct]
+        J[UCPInventorySnapshot]
+        K[UCPOrderEvent]
+        L[UCPInsight]
     end
 
-    %% ─── PLUGIN LAYER ──────────────────────────────────────────────────────────
-    subgraph PLUGINS["🔧 @goofre/plugins"]
-        direction LR
-        GP["GoogleMerchantPlugin\n(normalizeProduct\nnormalizeInventory\nnormalizeOrder)"]
-        PP["create-goofre-ucp\n(CLI Scaffolding)"]
-        IP["IGoofRePlugin Interface\n(@goofre/interfaces)"]
-        IP -.->|"implements"| GP
+    subgraph "AI Consumers"
+        M[Gemini Agent]
+        N[Merchant Dashboard PWA]
+        O[Your Application]
     end
 
-    %% ─── GOOGLE API STACK ──────────────────────────────────────────────────────
-    subgraph GOOGLE["☁️ Google API Stack"]
-        direction TB
-        MC["Merchant Center\n(PIM + Feed Hub)"]
-        SC["Search Console"]
-        GA_ADS["Google Ads\n(Performance Max)"]
-        BP["Business Profile\nGBP"]
-        GA4["GA4 Analytics"]
-        GW["Google Wallet\nLoyalty / Passes"]
-    end
+    A --> F
+    B --> G --> F
+    C --> E --> F
+    D --> F
+    F --> H
+    H --> I & J & K & L
+    I & J & K & L --> M & N & O
 
-    %% ─── MOCK SERVER ───────────────────────────────────────────────────────────
-    subgraph MOCK["🧪 @goofre/mock-server  ·  Port 3001"]
-        direction LR
-        MH["/health"]
-        MI["/api/insights"]
-        MPR["/api/products"]
-        MWT["/api/webhooks/test"]
-    end
-
-    %% ─── CI/CD PIPELINE ────────────────────────────────────────────────────────
-    subgraph CICD["🚀 CI/CD  ·  GitHub Actions"]
-        direction LR
-        L["Lint &\nTypecheck"]
-        T["Integration\nTests + Coverage\n(Codecov)"]
-        B["Build\nAll Packages\n(Turbo)"]
-        MS["Mock Server\nSmoke Test"]
-        L --> T & B --> MS
-    end
-
-    %% ─── DASHBOARD LITE APP ─────────────────────────────────────────────────────
-    subgraph DASH["📊 apps/dashboard-lite  ·  Next.js 15 PWA"]
-        direction TB
-
-        subgraph MERCHANT_VIEW["Merchant View"]
-            direction LR
-            AIF["AgenticInsightsFeed\n(real-time)"]
-            AEQ["AgenticEnrichmentQueue"]
-            PA["PredictiveAnalyticsRow"]
-            BCS["BrandContextScore"]
-            CS["ConversationalSearch\n(Gemini)"]
-            HZM["HeroZombieMatrix\n(SKU Health)"]
-            MRC["MorningRitualCards']"]
-            PEF["PlainEnglishFeed"]
-        end
-
-        subgraph PRO_VIEW["Pro View"]
-            direction LR
-            GT["GlobalTriage\n(Multi-Merchant)"]
-            MAB["MassActionBar"]
-            PG["PortfolioGrid"]
-        end
-
-        subgraph SHARED_UI["Shared UI Components"]
-            TL["TransactionLedger"]
-            SB["StatusBoard"]
-            CON["ConnectivityPulse"]
-            TN["TopNav\n(Merchant | Pro | Portfolio | Settings)"]
-            PRA["PredictiveReplenishAlert"]
-            RG["RetentionGauge"]
-            MH2["MetadataHealth"]
-            AOV["AgenticAOV"]
-        end
-    end
-
-    %% ─── OUTPUT / CONSUMERS ─────────────────────────────────────────────────────
-    subgraph OUTPUT["🤖 AI & Output Consumers"]
-        direction LR
-        GEM["Gemini Agent\n(Voice + Action)"]
-        DASH_OUT["Dashboard PWA\n(dashboard-lite)"]
-        EXT["Your Application\n(any consumer)"]
-    end
-
-    %% ─── CONNECTIONS ────────────────────────────────────────────────────────────
-    GMC & POS & ERP & GCCS --> SW
-    CHECKOUT --> SW
-
-    SW --> GOOGLE
-    MC --> SW
-
-    IN & OE & IS & P --> GEM & DASH_OUT & EXT
-    MOCK -.->|"dev / CI data"| DASH
-    MOCK -.->|"CI smoke test"| MS
-
-    %% ─── STYLES ─────────────────────────────────────────────────────────────────
-    style CORE fill:#1a1a2e,color:#eee,stroke:#4285F4,stroke-width:2px
-    style SW fill:#4285F4,color:#fff
-    style IN fill:#34A853,color:#fff
-    style WH fill:#EA4335,color:#fff
-    style PS fill:#FBBC04,color:#000
-    style GOOGLE fill:#0f3460,color:#eee,stroke:#4285F4
-    style DASH fill:#16213e,color:#eee,stroke:#7c3aed,stroke-width:2px
-    style CICD fill:#0d0d0d,color:#eee,stroke:#34A853,stroke-width:1px
-    style CHECKOUT fill:#1a0a2e,color:#eee,stroke:#9333ea
-    style INPUT fill:#1c1c1c,color:#eee,stroke:#555
-    style OUTPUT fill:#0a1628,color:#eee,stroke:#34A853
-    style PLUGINS fill:#1c1c1c,color:#eee,stroke:#FBBC04
-    style MOCK fill:#1c1c1c,color:#eee,stroke:#EA4335
+    style F fill:#4285F4,color:#fff
+    style H fill:#EA4335,color:#fff
+    style L fill:#34A853,color:#fff
 ```
 
 ### Core Components
