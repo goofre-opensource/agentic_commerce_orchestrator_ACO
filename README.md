@@ -365,7 +365,7 @@ This open-source ACO is the headless engine. **Goofre OS** is the managed platfo
 | White-label Deployment | — | ✅ |
 | Priority Support | — | ✅ |
 
-[Join the Goofre OS waitlist →](https://goofre.io)
+[Start your 7-day free trial →](https://www.goofre.com/os)
 
 ---
 
