@@ -121,7 +121,7 @@ graph TB
         A[Google Merchant Center]
         B[Point of Sale System]
         C[Custom ERP / Webhook]
-        D[Google Commerce-Centric Stack]
+        D[Google Shopping / Buy on Google]
     end
 
     subgraph "ACO Core Engine"
@@ -138,6 +138,10 @@ graph TB
         L[UCPInsight]
     end
 
+    subgraph "Plugin SDK — goofre-connect"
+        P[goofre-connect]
+    end
+
     subgraph "AI Consumers"
         M[Gemini Agent]
         N[Merchant Dashboard PWA]
@@ -150,11 +154,13 @@ graph TB
     D --> F
     F --> H
     H --> I & J & K & L
-    I & J & K & L --> M & N & O
+    I & J & K & L --> P
+    P --> M & N & O
 
     style F fill:#4285F4,color:#fff
     style H fill:#EA4335,color:#fff
     style L fill:#34A853,color:#fff
+    style P fill:#FBBC04,color:#000
 ```
 
 ### Core Components
