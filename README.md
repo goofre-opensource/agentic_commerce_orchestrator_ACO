@@ -49,25 +49,64 @@ With Goofre, you own the infrastructure. You can bundle, optimize, and deliver A
 
 ### How It Works: Harnessing the Google Stack
 
-Google Search, Chrome, and Gemini serve billions of active users daily, making them the ultimate discovery and conversion engines. Goofre leverages this by turning Google Merchant Center (GMC) into your core Product Information Management (PIM) and orchestration hub.
+Google operates the most powerful commerce-centric infrastructure on the planet — and most of it goes severely under-utilised because these tools exist in **isolated silos**. Goofre's job is to break those silos and wire them into a single, agentic orchestration layer.
 
-- **One-Way Data Synchronization:** Goofre seamlessly syncs raw SKU and catalog data from legacy e-commerce platforms directly into GMC.
-- **Intelligent Diagnostics:** The orchestrator autonomously identifies, flags, and brings your attention to critical feed issues or policy violations within GMC so you can fix them proactively.
-- **Full-Spectrum Orchestration:** Beyond the catalog, Goofre orchestrates the merchant's entire agentic lifecycle—powering dynamic advertising, sales optimization, automated customer service, and real-time inventory management directly through Google's unified ecosystem.
+#### The Google Commerce Stack — Connected by Goofre
+
+| Google Tool | Silo State Today | Orchestrated with Goofre |
+|---|---|---|
+| **Google Merchant Center (GMC)** | Manual feed uploads, reactive policy fixes | Becomes your merchant's **PIM** — canonical product source of truth, auto-synced, auto-validated |
+| **Google Business Profile (GBP)** | Updated manually, disconnected from inventory | Auto-updated with real stock levels, hours, and offers |
+| **Google Analytics (GA4)** | Passive reporting dashboard | Feeds real-time behavioural signals into `UCPInsight` for dynamic pricing and personalisation |
+| **Google Ads (GAds)** | Campaign managed separately from product data | Automatically retargeted from live GMC feed — no manual audience refreshes |
+| **Google Search Console (GSC)** | SEO monitoring only | Surfaces crawl and indexing data as signals for agentic product content optimisation |
+| **Performance Max / Studio** | Standalone creative tools | Triggered autonomously from UCP events — a new SKU fires an ad creative pipeline |
+| **Gemini / Vertex AI** | Experimented with individually | Unified inference layer — the reasoning engine across the full orchestration loop |
+
+#### From Siloed Tools to Agentic Commerce Infrastructure
+
+These tools do not natively talk to each other. A merchant managing Shopify, GMC, GA4, and GAds is juggling four separate platforms with four separate logins, four separate data models — and constantly losing context between them.
+
+**Goofre resolves this by making GMC the single source of truth (your PIM)**, then projecting normalised UCP-typed data outward to every other Google service:
+
+- **One-Way Data Synchronisation:** Raw SKU and catalog data from Shopify, WooCommerce, Magento, or any POS flows into GMC as the canonical record.
+- **Intelligent Diagnostics:** The orchestrator autonomously surfaces GMC feed violations, policy flags, and data quality gaps — before they tank ad spend.
+- **Commerce Intelligence Layer:** GA4 behavioural data, GSC search signals, and GAds performance metrics are ingested as `UCPInsight` events, giving the AI layer contextual business intelligence — not just raw product records.
+- **Full-Spectrum Agentic Orchestration:** From dynamic advertising (GAds + Performance Max) to automated customer communication and real-time inventory management — Goofre turns Google's fragmented commerce stack into a *single programmable platform* you control.
+
+> **You don't replace Google's tools. You become the layer that makes them work together.**
 
 ---
 
 ## ⚡ The Two-Minute Quick Start
 
+### Before You Begin — Google API Keys
+
+Goofre connects to the live Google Commerce Stack. You'll need these credentials when connecting real merchant accounts:
+
+| Credential | Where to get it | Used for |
+|---|---|---|
+| **GMC Merchant ID** | [Google Merchant Center](https://merchants.google.com) → Settings → Business info | Product feed sync, feed diagnostics |
+| **Google OAuth 2.0 Client** | [Google Cloud Console](https://console.cloud.google.com) → APIs & Services → Credentials | Authenticating all Google API calls |
+| **Content API for Shopping** | Enable in Cloud Console → Library | Read/write GMC product data |
+| **GA4 Measurement ID** *(optional)* | GA4 → Admin → Data Streams | Feeding behavioural signals into `UCPInsight` |
+| **Google Ads Developer Token** *(optional)* | [Google Ads API Centre](https://developers.google.com/google-ads/api/docs/get-started/dev-token) | Automated campaign sync |
+
+> 💡 **Mock mode available** — no keys needed for local development. Real credentials are only required when connecting to live merchant accounts.
+
+### Install & Run
+
 ```bash
 npx create-goofre-ucp my-commerce-layer
 cd my-commerce-layer
+cp .env.example .env
+# Fill in GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GMC_MERCHANT_ID
 npm start
 ```
 
-_Your admin dashboard is now configured to run at `http://localhost:3000/admin`._
+_Your admin dashboard is now running at `http://localhost:3000/admin`._
 
-The setup comes with a local zero-dependency SQLite database out-of-the-box, automatically seeded with mock customers, products, and orders. Additionally, `create-goofre-ucp` registers `MockPaymentGateway` and `MockEmailSender` plugins so you can immediately begin building and testing complex Agentic Webhooks.
+The setup ships with a zero-dependency **SQLite database**, automatically seeded with mock customers, products, and orders. `create-goofre-ucp` also registers `MockPaymentGateway` and `MockEmailSender` plugins so you can build and test full Agentic Webhooks locally — **without touching a live GMC account**.
 
 ---
 
