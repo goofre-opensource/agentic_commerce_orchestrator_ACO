@@ -1,37 +1,61 @@
 # Contributing to Goofre
 
-Thank you for your interest in Goofre!
+Welcome! 🎉 Whether you're fixing a typo, improving docs, or building a new plugin — we're glad you're here. Goofre is built by and for e-commerce developers.
 
-## The Goofre Quality Standard (Mainline Lockdown)
+## Ways to Contribute (Pick Your Lane)
 
-Goofre enforces an elite, zero-tolerance standard for code quality, built by Antigravity.
-The `main` branch is **strictly locked**.
+### 🟢 No-Code Contributions (Start here!)
 
-- **NO direct commits to `main` are allowed.**
-- All changes **MUST** go through a Pull Request.
-- PRs **MUST** pass all CI/CD integration tests, type checks, and linting rules.
-- You **MUST** have at least one peer approval before merging.
+Perfect for knowledge workers and developers new to the project:
 
-### Shift-Left Quality (Pre-commit)
+- Improve documentation and guides
+- Report bugs with clear, reproducible steps
+- Answer questions in [GitHub Discussions](https://github.com/goofre-opensource/agentic_commerce_orchestrator_ACO/discussions)
+- Share your Goofre-powered project in the Showcase
 
-We employ `husky` and `lint-staged` to catch errors locally. You should not physically be able to commit code that fails strict type checking and linting.
-If you want to simulate our GitHub Actions pipeline locally before pushing, simply run:
+### 🟡 Plugin Development
 
-```bash
-npm run validate
-```
+The best way to extend Goofre — without touching the core:
+
+- Build source plugins (Shopify, WooCommerce, Magento, BigCommerce, Square, Wix) in **your own repo**
+- Use `templates/goofre-integration-template` as your starting point
+- List your plugin in our [Community Plugins directory](#) so others can discover it
+
+> Goofre is a _pure orchestrator_. We do **not** accept PRs that add third-party platform plugins directly into the core engine.
+
+### 🔴 Core Engine Contributions
+
+The core engine has strict quality standards to protect stability for everyone:
+
+- All changes go through **Pull Requests** — no direct commits to `main`
+- PRs must pass CI: tests, TypeScript checks, linting
+- One peer approval required before merge
+
+**Before you push:** Run `npm run validate` locally to simulate the CI pipeline.
 
 ---
 
-## Architectural Principle
+## Quick Dev Setup
 
-Goofre is a _pure orchestrator_. We do **NOT** accept Pull Requests adding third-party plugins (e.g., Stripe, Shopify, Magento) directly into the core engine repository.
+```bash
+git clone https://github.com/goofre-opensource/agentic_commerce_orchestrator_ACO.git
+cd agentic_commerce_orchestrator_ACO
+npm install
+npm run dev
+```
 
-If you want to build an integration, please use the `templates/goofre-integration-template` and release it independently in your own repository or package.
+The project uses `husky` + `lint-staged` — Git hooks will catch type errors and linting issues before you can even commit. This is a safety net, not a barrier.
 
-We gladly welcome non-code contributions, including:
+---
 
-- Documentation improvements
-- Issue triaging
-- Bug reports with reproducible steps
-- Community support on Discord
+## First Time? Check These Issues
+
+Look for issues labelled [`good first issue`](https://github.com/goofre-opensource/agentic_commerce_orchestrator_ACO/labels/good%20first%20issue) — these are scoped, well-documented, and a great way to learn the codebase.
+
+---
+
+## Code of Conduct
+
+Be kind. We're all here to build something useful together.
+
+Questions? Open a [Discussion](https://github.com/goofre-opensource/agentic_commerce_orchestrator_ACO/discussions) or join [Discord](https://discord.gg/goofre).

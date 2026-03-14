@@ -71,6 +71,23 @@ The setup comes with a local zero-dependency SQLite database out-of-the-box, aut
 
 ---
 
+## 💡 What You Can Build
+
+Goofre is a set of primitives, not a locked product. Here's what developers in your position are building:
+
+| Project | Difficulty | Description |
+|---|---|---|
+| **Product Feed Optimizer** | 🟢 Beginner | Auto-detect and fix Google Merchant Center feed errors across 100+ SKUs |
+| **Cross-Platform Inventory Sync** | 🟡 Intermediate | Real-time inventory bridge between Shopify POS and GMC |
+| **AI Shopping Agent** | 🔴 Advanced | Gemini-powered conversational commerce using UCP-normalized data |
+| **Merchant Dashboard PWA** | 🟡 Intermediate | Mobile-first command center for merchants — inventory alerts, feed health, AI insights — without them needing to understand the underlying Google stack |
+| **Multi-Merchant Orchestrator** | 🔴 Advanced | Manage 50+ merchants from a single Goofre instance |
+| **Dynamic Pricing Engine** | 🟡 Intermediate | Auto-adjust prices based on `UCPInsight` competition data |
+
+> 💡 **Merchant PWA Idea**: Build a Progressive Web App that gives merchants a real-time mobile dashboard — inventory alerts, feed health, AI insights — without needing them to understand the underlying Google stack. Think of it as *their control tower* while you remain the orchestrator.
+
+---
+
 ## The Goofre Manifesto: Engineering Sovereignty
 
 We believe that e-commerce developers are the true architects of modern retail. Goofre exists to grant them absolute technical sovereignty.
@@ -148,6 +165,42 @@ graph TB
 | **PosSyncEngine**           | Dedicated POS inventory synchronization. Handles real-time stock updates with conflict resolution and queue deduplication.                                          |
 | **WebhookProcessor**        | Validates HMAC signatures, parses vendor-specific payloads, dispatches to the Switchboard. Supports any signature algorithm.                                        |
 | **UCP Schema Layer**        | TypeScript interfaces + runtime validators for `UCPProduct`, `UCPInventorySnapshot`, `UCPOrderEvent`, `UCPInsight`. The contract between raw data and AI consumers. |
+
+---
+
+## 🔑 Understanding UCP & The Google Stack
+
+<details>
+<summary><b>New to Google's commerce infrastructure? Start here.</b></summary>
+
+### The Google Commerce Stack (simplified)
+
+| Layer | Service | What It Does |
+|---|---|---|
+| Discovery | Google Search + Shopping | How consumers find products |
+| Intelligence | Gemini | AI that powers recommendations, agents, insights |
+| Catalog | Google Merchant Center (GMC) | The source-of-truth for product data |
+| Ads | Google Ads + Performance Max | Automated advertising across Google surfaces |
+| Analytics | GA4 + Merchant Reports | Performance measurement |
+
+### What is UCP?
+
+**Unified Commerce Protocol** is Goofre's standardized schema for normalizing commerce data from *any* source into a format that Google's stack natively understands. Think of it as:
+
+- **For Shopify devs**: Like the Shopify REST Admin API, but platform-agnostic
+- **For WooCommerce devs**: Like the WooCommerce REST API v3, but AI-native
+- **For agency devs**: One schema to normalize all your clients' catalogs
+
+### UCP Core Types
+
+| Type | Purpose | Think of it as... |
+|---|---|---|
+| `UCPProduct` | Normalized product with pricing + inventory | A "super product object" |
+| `UCPInventorySnapshot` | Point-in-time stock by location | Real-time stock checker |
+| `UCPOrderEvent` | Order lifecycle events | Webhook payloads, standardized |
+| `UCPInsight` | AI-generated commerce intelligence | "Your AI co-pilot's notes" |
+
+</details>
 
 ---
 
@@ -273,6 +326,49 @@ docker compose up --build
 
 ---
 
+## 🗺️ Roadmap
+
+### Now (v1.x)
+- [x] Core SwitchboardOrchestrator with UCP schema
+- [x] Google Merchant Center plugin
+- [x] Mock server for local development
+- [x] `npx create-goofre-ucp` scaffolding
+- [x] Docker Compose dev environment
+
+### Next (v2.x)
+- [ ] **Multi-LLM Compatibility** — Swap between Gemini, GPT-4, Claude, and Llama as your AI backbone. Goofre orchestrates commerce; your choice of brain powers the intelligence.
+- [ ] Shopify / WooCommerce / Magento source plugins (community-built)
+- [ ] Webhook-driven real-time sync (beyond polling)
+- [ ] UCPInsight: AI-powered feed diagnostics with actionable fix suggestions
+
+### Future (v3.x)
+- [ ] MCP Server protocol — expose your orchestrator as a tool for any AI agent
+- [ ] Multi-merchant tenant isolation
+- [ ] Merchant PWA reference app
+- [ ] Voice agent integration (Gemini Live)
+
+Want to influence the roadmap? [Open a feature request →](https://github.com/goofre-opensource/agentic_commerce_orchestrator_ACO/issues/new?template=feature_request.yml)
+
+---
+
+## 🏢 Goofre OS — The Full Platform
+
+This open-source ACO is the headless engine. **Goofre OS** is the managed platform built on top of it:
+
+| Feature | OSS (this repo) | Goofre OS |
+|---|---|---|
+| Core Orchestrator | ✅ | ✅ |
+| UCP Schema + Plugins | ✅ | ✅ |
+| Merchant Dashboard PWA | — | ✅ |
+| Voice Agent (Gemini Live) | — | ✅ |
+| Multi-tenant Hosting | — | ✅ |
+| White-label Deployment | — | ✅ |
+| Priority Support | — | ✅ |
+
+[Join the Goofre OS waitlist →](https://goofre.io)
+
+---
+
 ## 🤝 Community
 
 - **Discord:** [discord.gg/goofre](https://discord.gg/goofre)
@@ -291,5 +387,3 @@ You can read, modify, and use Goofre in production to orchestrate commerce for y
 > **Why BSL?** We want the source code to be fully transparent while protecting our ability to fund development through Goofre OS. Companies like HashiCorp, Sentry, and CockroachDB use the same model.
 
 Built with ❤️ by the Goofre team and open-source contributors.
-
-> **Enterprise / Managed Cloud?** The open-source ACO is the headless engine. For the full Merchant Dashboard, Voice Agent, and managed hosting, visit [goofre.io](https://goofre.io).
