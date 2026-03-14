@@ -414,6 +414,24 @@ This open-source ACO is the headless engine. **Goofre OS** is the managed platfo
 
 ---
 
+## 🎁 Refer & Earn — 6 Months Goofre OS Free
+
+**Fork. Star. Invite 3 developers who fork. Get 6 months of Goofre OS free.**
+
+| Action | Requirement |
+|---|---|
+| 1️⃣ Fork this repo | Your GitHub account must have a live fork |
+| 2️⃣ Star this repo ⭐ | Confirms genuine interest |
+| 3️⃣ Share your personal referral link | Generated at **[goofre.com/refer](https://www.goofre.com/refer)** after step 1 |
+| ✅ 3 developers fork via your link | They must complete a fork — not just click |
+| 🎉 Reward | **6 months Goofre OS free** — no credit card needed |
+
+> Your referrals can also refer others and earn the same reward. Everyone wins.
+
+📄 **Full program rules:** [REFERRAL.md](./REFERRAL.md) · 🔗 **Claim:** [goofre.com/refer](https://www.goofre.com/refer)
+
+---
+
 ## 🤝 Community
 
 - **Discord:** [discord.gg/goofre](https://discord.gg/goofre)
