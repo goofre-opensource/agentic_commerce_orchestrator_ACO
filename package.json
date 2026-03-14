@@ -67,7 +67,7 @@
     "node": ">=20.0.0",
     "npm": ">=9.0.0"
   },
-  "license": "MIT",
+  "license": "BSL-1.1",
   "author": "Goofre, Inc.",
   "repository": {
     "type": "git",

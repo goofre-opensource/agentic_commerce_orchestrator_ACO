@@ -7,7 +7,7 @@
 <img src="https://img.shields.io/github/actions/workflow/status/goofre-opensource/agentic_commerce_orchestrator_ACO/ci.yml?branch=main&style=for-the-badge" alt="Build Status" />
 <img src="https://img.shields.io/badge/coverage-94%25-brightgreen.svg?style=for-the-badge" alt="Coverage" />
 <img src="https://img.shields.io/badge/npm-v0.1.0--alpha-blue?style=for-the-badge" alt="NPM Version" />
-<img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" alt="MIT License" />
+<img src="https://img.shields.io/badge/License-BSL_1.1-blue.svg?style=for-the-badge" alt="BSL 1.1 License" />
 
 <br /><br />
 
@@ -284,7 +284,11 @@ docker compose up --build
 
 ## 📄 License
 
-MIT — see [LICENSE](./LICENSE).
+**BSL 1.1** (Business Source License) — see [LICENSE](./LICENSE).
+
+You can read, modify, and use Goofre in production to orchestrate commerce for your merchants. The only restriction: you cannot offer Goofre as a competing managed service. On **March 14, 2030**, the code automatically converts to **Apache 2.0** with no restrictions.
+
+> **Why BSL?** We want the source code to be fully transparent while protecting our ability to fund development through Goofre OS. Companies like HashiCorp, Sentry, and CockroachDB use the same model.
 
 Built with ❤️ by the Goofre team and open-source contributors.
 
