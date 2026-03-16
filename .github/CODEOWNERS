@@ -1,0 +1,23 @@
+# Goofre ACO — Code Ownership Rules
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default: core maintainers review everything
+*                           @goofre-opensource/core-maintainers
+
+# Core engine — strictest review
+packages/core-engine/       @goofre-opensource/core-maintainers
+packages/interfaces/        @goofre-opensource/core-maintainers
+
+# Plugin SDK — plugin maintainers can also review
+packages/plugins/           @goofre-opensource/core-maintainers @goofre-opensource/plugin-maintainers
+packages/create-goofre-ucp/ @goofre-opensource/core-maintainers @goofre-opensource/plugin-maintainers
+templates/                  @goofre-opensource/plugin-maintainers
+
+# CI/CD and infrastructure — only core maintainers
+.github/                    @goofre-opensource/core-maintainers
+docker-compose.yml          @goofre-opensource/core-maintainers
+turbo.json                  @goofre-opensource/core-maintainers
+
+# Documentation — broader access
+docs/                       @goofre-opensource/core-maintainers @goofre-opensource/plugin-maintainers
+*.md                        @goofre-opensource/core-maintainers
