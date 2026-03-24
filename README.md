@@ -12,7 +12,7 @@
 <br /><br />
 
 <p>Empowering e-commerce developers to command the agentic future. <br/>
-Bypass platform lock-in. Orchestrate Google's commerce stack directly for your merchants.</p>
+Bypass platform lock-in. Orchestrate Google's commerce stack directly.</p>
 
 [**Quickstart (2 min)**](#-the-two-minute-quick-start) · [**Architecture**](#-how-it-works) · [**API Docs**](#-api-reference) · [**Discord**](#-community) · [**Website**](https://goofre.io)
 
@@ -45,7 +45,7 @@ Goofre elevates developers from mere integrators to true **Agentic Commerce Orch
 
 Acting as a high-performance switchboard, Goofre wires directly into the massive infrastructure of Google’s business and commerce solutions—the underlying foundation of the Unified Commerce Protocol (UCP). It enables you to orchestrate agentic commerce workflows without any reliance on third-party e-commerce platforms or website builders.
 
-With Goofre, you own the infrastructure. You can bundle, optimize, and deliver AI-native commerce and marketing services directly to your merchants, entirely on your terms.
+With Goofre, you own the infrastructure. You can bundle, optimize, and deliver AI-native commerce and marketing services directly to your clients, entirely on your terms.
 
 ### How It Works: Harnessing the Google Stack
 
@@ -55,7 +55,7 @@ Google operates the most powerful commerce-centric infrastructure on the planet 
 
 | Google Tool | Silo State Today | Orchestrated with Goofre |
 |---|---|---|
-| **Google Merchant Center (GMC)** | Manual feed uploads, reactive policy fixes | Becomes your merchant's **PIM** — canonical product source of truth, auto-synced, auto-validated |
+| **Google Merchant Center (GMC)** | Manual feed uploads, reactive policy fixes | Becomes your **PIM** — canonical product source of truth, auto-synced, auto-validated |
 | **Google Business Profile (GBP)** | Updated manually, disconnected from inventory | Auto-updated with real stock levels, hours, and offers |
 | **Google Analytics (GA4)** | Passive reporting dashboard | Feeds real-time behavioural signals into `UCPInsight` for dynamic pricing and personalisation |
 | **Google Ads (GAds)** | Campaign managed separately from product data | Automatically retargeted from live GMC feed — no manual audience refreshes |
@@ -65,7 +65,7 @@ Google operates the most powerful commerce-centric infrastructure on the planet 
 
 #### From Siloed Tools to Agentic Commerce Infrastructure
 
-These tools do not natively talk to each other. A merchant managing Shopify, GMC, GA4, and GAds is juggling four separate platforms with four separate logins, four separate data models — and constantly losing context between them.
+These tools do not natively talk to each other. A business managing Shopify, GMC, GA4, and GAds is juggling four separate platforms with four separate logins, four separate data models — and constantly losing context between them.
 
 **Goofre resolves this by making GMC the single source of truth (your PIM)**, then projecting normalised UCP-typed data outward to every other Google service:
 
@@ -82,7 +82,7 @@ These tools do not natively talk to each other. A merchant managing Shopify, GMC
 
 ### Before You Begin — Google API Keys
 
-Goofre connects to the live Google Commerce Stack. You'll need these credentials when connecting real merchant accounts:
+Goofre connects to the live Google Commerce Stack. You'll need these credentials when connecting real commerce accounts:
 
 | Credential | Where to get it | Used for |
 |---|---|---|
@@ -92,7 +92,7 @@ Goofre connects to the live Google Commerce Stack. You'll need these credentials
 | **GA4 Measurement ID** *(optional)* | GA4 → Admin → Data Streams | Feeding behavioural signals into `UCPInsight` |
 | **Google Ads Developer Token** *(optional)* | [Google Ads API Centre](https://developers.google.com/google-ads/api/docs/get-started/dev-token) | Automated campaign sync |
 
-> 💡 **Mock mode available** — no keys needed for local development. Real credentials are only required when connecting to live merchant accounts.
+> 💡 **Mock mode available** — no keys needed for local development. Real credentials are only required when connecting to live commerce accounts.
 
 ### Install & Run
 
@@ -119,11 +119,12 @@ Goofre is a set of primitives, not a locked product. Here's what developers in y
 | **Product Feed Optimizer** | 🟢 Beginner | Auto-detect and fix Google Merchant Center feed errors across 100+ SKUs |
 | **Cross-Platform Inventory Sync** | 🟡 Intermediate | Real-time inventory bridge between Shopify POS and GMC |
 | **AI Shopping Agent** | 🔴 Advanced | Gemini-powered conversational commerce using UCP-normalized data |
-| **Merchant Dashboard PWA** | 🟡 Intermediate | Mobile-first command center for merchants — inventory alerts, feed health, AI insights — without them needing to understand the underlying Google stack |
+| **Client Dashboard App** | 🟡 Intermediate | Mobile-first command center — inventory alerts, feed health, AI insights — without clients needing to understand the underlying Google stack |
 | **Multi-Merchant Orchestrator** | 🔴 Advanced | Manage 50+ merchants from a single Goofre instance |
 | **Dynamic Pricing Engine** | 🟡 Intermediate | Auto-adjust prices based on `UCPInsight` competition data |
 
-> 💡 **Merchant PWA Idea**: Build a Progressive Web App that gives merchants a real-time mobile dashboard — inventory alerts, feed health, AI insights — without needing them to understand the underlying Google stack. Think of it as *their control tower* while you remain the orchestrator.
+
+> 💡 **Client Dashboard Idea**: Build a dashboard app that gives clients a real-time view — inventory alerts, feed health, AI insights — without needing them to understand the underlying Google stack. Think of it as *their control tower* while you remain the orchestrator.
 
 ---
 
@@ -132,9 +133,9 @@ Goofre is a set of primitives, not a locked product. Here's what developers in y
 We believe that e-commerce developers are the true architects of modern retail. Goofre exists to grant them absolute technical sovereignty.
 
 1. **We build orchestrators, not platforms.** We do not dictate where your data lives; we give you the power to command it.
-2. **True Independence.** We empower developers to become independent orchestrators, delivering platform-free, AI-native commerce experiences directly to their merchants.
+2. **True Independence.** We empower developers to become independent orchestrators, delivering platform-free, AI-native commerce experiences directly to their clients.
 3. **Agent-First Architecture.** The future of commerce is agentic. We provide the robust, Google-stack-powered infrastructure necessary to build systems that act, decide, and optimize autonomously.
-4. **No Vendor Lock-In.** Your merchants' data, workflows, and logic belong to them, orchestrated by you.
+4. **No Vendor Lock-In.** Your clients' data, workflows, and logic belong to them, orchestrated by you.
 
 Build without boundaries. Orchestrate the future.
 
@@ -142,11 +143,11 @@ Build without boundaries. Orchestrate the future.
 
 ## 📈 Visual Proof & Business Translation
 
-Goofre doesn't just improve developer experience; it fundamentally rewrites the merchant's unit economics. When selling your Goofre-powered architecture to merchants, translate your technical stack into these immediate business outcomes:
+Goofre doesn't just improve developer experience; it fundamentally rewrites the unit economics of commerce delivery. Translate your Goofre-powered architecture into these immediate business outcomes:
 
-- **Eliminate Legacy Overhead:** Stop paying the "ecosystem tax." By orchestrating commerce directly, your merchants instantly eliminate traditional platform subscription fees, bloated third-party app costs, and expensive ad-performance agency retainers.
-- **Turnkey Agentic Commerce:** Future-proof merchants instantly. Goofre seamlessly orchestrates Google's powerful, natively integrated commerce stack (Search, Merchant Center, Gemini) to drive tangible, automated business results without relying on a passive website.
-- **Scale Without Store-Building:** Stop wasting hundreds of development hours designing, testing, and maintaining fragile website templates. Deploy, manage, and scale intelligent agentic commerce workflows across multiple merchants directly from a single Goofre orchestrator instance.
+- **Eliminate Legacy Overhead:** Stop paying the "ecosystem tax." By orchestrating commerce directly, you eliminate traditional platform subscription fees, bloated third-party app costs, and expensive ad-performance agency retainers.
+- **Turnkey Agentic Commerce:** Future-proof your commerce stack instantly. Goofre seamlessly orchestrates Google's powerful, natively integrated commerce infrastructure (Search, Merchant Center, Gemini) to drive tangible, automated business results without relying on a passive website.
+- **Scale Without Store-Building:** Stop wasting hundreds of development hours designing, testing, and maintaining fragile website templates. Deploy, manage, and scale intelligent agentic commerce workflows across multiple clients directly from a single Goofre orchestrator instance.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fgoofre-opensource%2Fagentic_commerce_orchestrator_ACO) [![Deploy with Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https%3A%2F%2Fgithub.com%2Fgoofre-opensource%2Fagentic_commerce_orchestrator_ACO) [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template)
 
@@ -183,7 +184,7 @@ graph TB
 
     subgraph "AI Consumers"
         M[Gemini Agent]
-        N[Merchant Dashboard PWA]
+        N[Client Dashboard]
         O[Your Application]
     end
 
@@ -362,7 +363,7 @@ UCPInsight; // AI-generated actionable commerce intelligence
 # Start everything (mock server + core engine in watch mode)
 docker compose up
 
-# Mock server only (lightest — perfect for PWA frontend dev)
+# Mock server only (lightest — perfect for frontend dev)
 docker compose up mock-server
 
 # Rebuild after package changes
@@ -389,46 +390,16 @@ docker compose up --build
 ### Future (v3.x)
 - [ ] MCP Server protocol — expose your orchestrator as a tool for any AI agent
 - [ ] Multi-merchant tenant isolation
-- [ ] Merchant PWA reference app
+- [ ] Client dashboard reference app
 - [ ] Voice agent integration (Gemini Live)
 
 Want to influence the roadmap? [Open a feature request →](https://github.com/goofre-opensource/agentic_commerce_orchestrator_ACO/issues/new?template=feature_request.yml)
 
 ---
 
-## 🏢 Goofre OS — The Full Platform
+## 🌐 Learn More
 
-This open-source ACO is the headless engine. **Goofre OS** is the managed platform built on top of it:
-
-| Feature | OSS (this repo) | Goofre OS |
-|---|---|---|
-| Core Orchestrator | ✅ | ✅ |
-| UCP Schema + Plugins | ✅ | ✅ |
-| Merchant Dashboard PWA | — | ✅ |
-| Voice Agent (Gemini Live) | — | ✅ |
-| Multi-tenant Hosting | — | ✅ |
-| White-label Deployment | — | ✅ |
-| Priority Support | — | ✅ |
-
-[Start your 7-day free trial →](https://www.goofre.com/os)
-
----
-
-## 🎁 Refer & Earn — 6 Months Goofre OS Free
-
-**Fork. Star. Invite 3 developers who fork. Get 6 months of Goofre OS free.**
-
-| Action | Requirement |
-|---|---|
-| 1️⃣ Fork this repo | Your GitHub account must have a live fork |
-| 2️⃣ Star this repo ⭐ | Confirms genuine interest |
-| 3️⃣ Share your personal referral link | Generated at **[goofre.com/refer](https://www.goofre.com/refer)** after step 1 |
-| ✅ 3 developers fork via your link | They must complete a fork — not just click |
-| 🎉 Reward | **6 months Goofre OS free** — no credit card needed |
-
-> Your referrals can also refer others and earn the same reward. Everyone wins.
-
-📄 **Full program rules:** [REFERRAL.md](./REFERRAL.md) · 🔗 **Claim:** [goofre.com/refer](https://www.goofre.com/refer)
+Visit [goofre.com](https://www.goofre.com) for documentation, guides, and community resources.
 
 ---
 
@@ -445,7 +416,7 @@ This open-source ACO is the headless engine. **Goofre OS** is the managed platfo
 
 **BSL 1.1** (Business Source License) — see [LICENSE](./LICENSE).
 
-You can read, modify, and use Goofre in production to orchestrate commerce for your merchants. The only restriction: you cannot offer Goofre as a competing managed service. On **March 14, 2030**, the code automatically converts to **Apache 2.0** with no restrictions.
+You can read, modify, and use Goofre in production to orchestrate commerce for your clients. The only restriction: you cannot offer Goofre as a competing managed service. On **March 14, 2030**, the code automatically converts to **Apache 2.0** with no restrictions.
 
 > **Why BSL?** We want the source code to be fully transparent while protecting our ability to fund development through Goofre OS. Companies like HashiCorp, Sentry, and CockroachDB use the same model.
 
