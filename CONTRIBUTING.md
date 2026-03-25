@@ -38,7 +38,7 @@ The core engine has strict quality standards to protect stability for everyone:
 ## Quick Dev Setup
 
 ```bash
-git clone https://github.com/goofre-opensource/agentic_commerce_orchestrator_ACO.git
+git clone https://github.com/Goofre-Agentic-Commerce-Orchestrator/agentic_commerce_orchestrator_ACO.git
 cd agentic_commerce_orchestrator_ACO
 npm install
 npm run dev

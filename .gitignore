@@ -44,3 +44,11 @@ coverage/
 
 # Turbo
 .turbo/
+
+# Google service account credentials — NEVER commit
+credentials.json
+*credentials*.json
+service-account*.json
+
+# IDE
+.vscode/
