@@ -2,7 +2,7 @@
 
 <img src="./assets/logo.jpg" alt="Goofre Logo" width="400" height="400" />
 
-<h1>Goofre: The Agentic Commerce Orchestrator (ACO)</h1>
+<h1>Goofre™: The Agentic Commerce Orchestrator™ (ACO™)</h1>
 
 <img src="https://img.shields.io/github/actions/workflow/status/goofre-opensource/agentic_commerce_orchestrator_ACO/ci.yml?branch=main&style=for-the-badge" alt="Build Status" />
 <img src="https://codecov.io/gh/Goofre-Agentic-Commerce-Orchestrator/agentic_commerce_orchestrator_ACO/graph/badge.svg?token=382f8ccb-d9ac-4f4e-9425-b601de99294e" alt="Coverage" />
@@ -41,17 +41,17 @@ This raises an existential question: **Where does the custom e-commerce develope
 
 ## The Solution: Become the Orchestrator
 
-Goofre elevates developers from mere integrators to true **Agentic Commerce Orchestrators**.
+Goofre™ elevates developers from mere integrators to true **Agentic Commerce Orchestrators™**.
 
-Acting as a high-performance switchboard, Goofre wires directly into the massive infrastructure of Google’s business and commerce solutions—the underlying foundation of the Unified Commerce Protocol (UCP). It enables you to orchestrate agentic commerce workflows without any reliance on third-party e-commerce platforms or website builders.
+Acting as a high-performance switchboard, Goofre™ wires directly into the massive infrastructure of Google’s business and commerce solutions—the underlying foundation of the Unified Commerce Protocol (UCP). It enables you to orchestrate agentic commerce workflows without any reliance on third-party e-commerce platforms or website builders.
 
-With Goofre, you own the infrastructure. You can bundle, optimize, and deliver AI-native commerce and marketing services directly to your clients, entirely on your terms.
+With Goofre™, you own the infrastructure. You can bundle, optimize, and deliver AI-native commerce and marketing services directly to your clients, entirely on your terms.
 
 ### How It Works: Harnessing the Google Stack
 
 Google operates the most powerful commerce-centric infrastructure on the planet — and most of it goes severely under-utilised because these tools exist in **isolated silos**. Goofre's job is to break those silos and wire them into a single, agentic orchestration layer.
 
-#### The Google Commerce Stack — Connected by Goofre
+#### The Google Commerce Stack — Connected by Goofre™
 
 | Google Tool                       | Silo State Today                              | Orchestrated with Goofre                                                                      |
 | --------------------------------- | --------------------------------------------- | --------------------------------------------------------------------------------------------- |
