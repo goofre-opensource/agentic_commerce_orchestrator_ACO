@@ -39,14 +39,15 @@
   "jest": {
     "preset": "ts-jest",
     "testEnvironment": "node",
-    "extensionsToTreatAsEsm": [
-      ".ts"
+    "testMatch": [
+      "**/tests/**/*.test.ts"
     ],
     "transform": {
       "^.+\\.tsx?$": [
         "ts-jest",
         {
-          "useESM": true
+          "tsconfig": "./tests/tsconfig.json",
+          "useESM": false
         }
       ]
     },
@@ -64,8 +65,8 @@
     ]
   },
   "engines": {
-    "node": ">=20.0.0",
-    "npm": ">=9.0.0"
+    "node": ">=22.0.0",
+    "npm": ">=10.0.0"
   },
   "license": "BSL-1.1",
   "author": "Goofre, Inc.",

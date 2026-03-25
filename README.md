@@ -5,7 +5,7 @@
 <h1>Goofre: The Agentic Commerce Orchestrator (ACO)</h1>
 
 <img src="https://img.shields.io/github/actions/workflow/status/goofre-opensource/agentic_commerce_orchestrator_ACO/ci.yml?branch=main&style=for-the-badge" alt="Build Status" />
-<img src="https://img.shields.io/badge/coverage-94%25-brightgreen.svg?style=for-the-badge" alt="Coverage" />
+<img src="https://codecov.io/gh/Goofre-Agentic-Commerce-Orchestrator/agentic_commerce_orchestrator_ACO/graph/badge.svg?token=382f8ccb-d9ac-4f4e-9425-b601de99294e" alt="Coverage" />
 <img src="https://img.shields.io/badge/npm-v0.1.0--alpha-blue?style=for-the-badge" alt="NPM Version" />
 <img src="https://img.shields.io/badge/License-BSL_1.1-blue.svg?style=for-the-badge" alt="BSL 1.1 License" />
 
@@ -53,15 +53,15 @@ Google operates the most powerful commerce-centric infrastructure on the planet 
 
 #### The Google Commerce Stack — Connected by Goofre
 
-| Google Tool | Silo State Today | Orchestrated with Goofre |
-|---|---|---|
-| **Google Merchant Center (GMC)** | Manual feed uploads, reactive policy fixes | Becomes your **PIM** — canonical product source of truth, auto-synced, auto-validated |
-| **Google Business Profile (GBP)** | Updated manually, disconnected from inventory | Auto-updated with real stock levels, hours, and offers |
-| **Google Analytics (GA4)** | Passive reporting dashboard | Feeds real-time behavioural signals into `UCPInsight` for dynamic pricing and personalisation |
-| **Google Ads (GAds)** | Campaign managed separately from product data | Automatically retargeted from live GMC feed — no manual audience refreshes |
-| **Google Search Console (GSC)** | SEO monitoring only | Surfaces crawl and indexing data as signals for agentic product content optimisation |
-| **Performance Max / Studio** | Standalone creative tools | Triggered autonomously from UCP events — a new SKU fires an ad creative pipeline |
-| **Gemini / Vertex AI** | Experimented with individually | Unified inference layer — the reasoning engine across the full orchestration loop |
+| Google Tool                       | Silo State Today                              | Orchestrated with Goofre                                                                      |
+| --------------------------------- | --------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| **Google Merchant Center (GMC)**  | Manual feed uploads, reactive policy fixes    | Becomes your **PIM** — canonical product source of truth, auto-synced, auto-validated         |
+| **Google Business Profile (GBP)** | Updated manually, disconnected from inventory | Auto-updated with real stock levels, hours, and offers                                        |
+| **Google Analytics (GA4)**        | Passive reporting dashboard                   | Feeds real-time behavioural signals into `UCPInsight` for dynamic pricing and personalisation |
+| **Google Ads (GAds)**             | Campaign managed separately from product data | Automatically retargeted from live GMC feed — no manual audience refreshes                    |
+| **Google Search Console (GSC)**   | SEO monitoring only                           | Surfaces crawl and indexing data as signals for agentic product content optimisation          |
+| **Performance Max / Studio**      | Standalone creative tools                     | Triggered autonomously from UCP events — a new SKU fires an ad creative pipeline              |
+| **Gemini / Vertex AI**            | Experimented with individually                | Unified inference layer — the reasoning engine across the full orchestration loop             |
 
 #### From Siloed Tools to Agentic Commerce Infrastructure
 
@@ -72,7 +72,7 @@ These tools do not natively talk to each other. A business managing Shopify, GMC
 - **One-Way Data Synchronisation:** Raw SKU and catalog data from Shopify, WooCommerce, Magento, or any POS flows into GMC as the canonical record.
 - **Intelligent Diagnostics:** The orchestrator autonomously surfaces GMC feed violations, policy flags, and data quality gaps — before they tank ad spend.
 - **Commerce Intelligence Layer:** GA4 behavioural data, GSC search signals, and GAds performance metrics are ingested as `UCPInsight` events, giving the AI layer contextual business intelligence — not just raw product records.
-- **Full-Spectrum Agentic Orchestration:** From dynamic advertising (GAds + Performance Max) to automated customer communication and real-time inventory management — Goofre turns Google's fragmented commerce stack into a *single programmable platform* you control.
+- **Full-Spectrum Agentic Orchestration:** From dynamic advertising (GAds + Performance Max) to automated customer communication and real-time inventory management — Goofre turns Google's fragmented commerce stack into a _single programmable platform_ you control.
 
 > **You don't replace Google's tools. You become the layer that makes them work together.**
 
@@ -84,13 +84,13 @@ These tools do not natively talk to each other. A business managing Shopify, GMC
 
 Goofre connects to the live Google Commerce Stack. You'll need these credentials when connecting real commerce accounts:
 
-| Credential | Where to get it | Used for |
-|---|---|---|
-| **GMC Merchant ID** | [Google Merchant Center](https://merchants.google.com) → Settings → Business info | Product feed sync, feed diagnostics |
-| **Google OAuth 2.0 Client** | [Google Cloud Console](https://console.cloud.google.com) → APIs & Services → Credentials | Authenticating all Google API calls |
-| **Content API for Shopping** | Enable in Cloud Console → Library | Read/write GMC product data |
-| **GA4 Measurement ID** *(optional)* | GA4 → Admin → Data Streams | Feeding behavioural signals into `UCPInsight` |
-| **Google Ads Developer Token** *(optional)* | [Google Ads API Centre](https://developers.google.com/google-ads/api/docs/get-started/dev-token) | Automated campaign sync |
+| Credential                                  | Where to get it                                                                                  | Used for                                      |
+| ------------------------------------------- | ------------------------------------------------------------------------------------------------ | --------------------------------------------- |
+| **GMC Merchant ID**                         | [Google Merchant Center](https://merchants.google.com) → Settings → Business info                | Product feed sync, feed diagnostics           |
+| **Google OAuth 2.0 Client**                 | [Google Cloud Console](https://console.cloud.google.com) → APIs & Services → Credentials         | Authenticating all Google API calls           |
+| **Content API for Shopping**                | Enable in Cloud Console → Library                                                                | Read/write GMC product data                   |
+| **GA4 Measurement ID** _(optional)_         | GA4 → Admin → Data Streams                                                                       | Feeding behavioural signals into `UCPInsight` |
+| **Google Ads Developer Token** _(optional)_ | [Google Ads API Centre](https://developers.google.com/google-ads/api/docs/get-started/dev-token) | Automated campaign sync                       |
 
 > 💡 **Mock mode available** — no keys needed for local development. Real credentials are only required when connecting to live commerce accounts.
 
@@ -114,17 +114,16 @@ The setup ships with a zero-dependency **SQLite database**, automatically seeded
 
 Goofre is a set of primitives, not a locked product. Here's what developers in your position are building:
 
-| Project | Difficulty | Description |
-|---|---|---|
-| **Product Feed Optimizer** | 🟢 Beginner | Auto-detect and fix Google Merchant Center feed errors across 100+ SKUs |
-| **Cross-Platform Inventory Sync** | 🟡 Intermediate | Real-time inventory bridge between Shopify POS and GMC |
-| **AI Shopping Agent** | 🔴 Advanced | Gemini-powered conversational commerce using UCP-normalized data |
-| **Client Dashboard App** | 🟡 Intermediate | Mobile-first command center — inventory alerts, feed health, AI insights — without clients needing to understand the underlying Google stack |
-| **Multi-Merchant Orchestrator** | 🔴 Advanced | Manage 50+ merchants from a single Goofre instance |
-| **Dynamic Pricing Engine** | 🟡 Intermediate | Auto-adjust prices based on `UCPInsight` competition data |
+| Project                           | Difficulty      | Description                                                                                                                                  |
+| --------------------------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Product Feed Optimizer**        | 🟢 Beginner     | Auto-detect and fix Google Merchant Center feed errors across 100+ SKUs                                                                      |
+| **Cross-Platform Inventory Sync** | 🟡 Intermediate | Real-time inventory bridge between Shopify POS and GMC                                                                                       |
+| **AI Shopping Agent**             | 🔴 Advanced     | Gemini-powered conversational commerce using UCP-normalized data                                                                             |
+| **Client Dashboard App**          | 🟡 Intermediate | Mobile-first command center — inventory alerts, feed health, AI insights — without clients needing to understand the underlying Google stack |
+| **Multi-Merchant Orchestrator**   | 🔴 Advanced     | Manage 50+ merchants from a single Goofre instance                                                                                           |
+| **Dynamic Pricing Engine**        | 🟡 Intermediate | Auto-adjust prices based on `UCPInsight` competition data                                                                                    |
 
-
-> 💡 **Client Dashboard Idea**: Build a dashboard app that gives clients a real-time view — inventory alerts, feed health, AI insights — without needing them to understand the underlying Google stack. Think of it as *their control tower* while you remain the orchestrator.
+> 💡 **Client Dashboard Idea**: Build a dashboard app that gives clients a real-time view — inventory alerts, feed health, AI insights — without needing them to understand the underlying Google stack. Think of it as _their control tower_ while you remain the orchestrator.
 
 ---
 
@@ -149,7 +148,7 @@ Goofre doesn't just improve developer experience; it fundamentally rewrites the 
 - **Turnkey Agentic Commerce:** Future-proof your commerce stack instantly. Goofre seamlessly orchestrates Google's powerful, natively integrated commerce infrastructure (Search, Merchant Center, Gemini) to drive tangible, automated business results without relying on a passive website.
 - **Scale Without Store-Building:** Stop wasting hundreds of development hours designing, testing, and maintaining fragile website templates. Deploy, manage, and scale intelligent agentic commerce workflows across multiple clients directly from a single Goofre orchestrator instance.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fgoofre-opensource%2Fagentic_commerce_orchestrator_ACO) [![Deploy with Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https%3A%2F%2Fgithub.com%2Fgoofre-opensource%2Fagentic_commerce_orchestrator_ACO) [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fgoofre-opensource%2Fagentic_commerce_orchestrator_ACO) [![Deploy with Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https%3A%2F%2Fgithub.com%2Fgoofre-opensource%2Fagentic_commerce_orchestrator_ACO) [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https%3A%2F%2Fgithub.com%2Fgoofre-opensource%2Fagentic_commerce_orchestrator_ACO)
 
 ---
 
@@ -221,17 +220,17 @@ graph TB
 
 ### The Google Commerce Stack (simplified)
 
-| Layer | Service | What It Does |
-|---|---|---|
-| Discovery | Google Search + Shopping | How consumers find products |
-| Intelligence | Gemini | AI that powers recommendations, agents, insights |
-| Catalog | Google Merchant Center (GMC) | The source-of-truth for product data |
-| Ads | Google Ads + Performance Max | Automated advertising across Google surfaces |
-| Analytics | GA4 + Merchant Reports | Performance measurement |
+| Layer        | Service                      | What It Does                                     |
+| ------------ | ---------------------------- | ------------------------------------------------ |
+| Discovery    | Google Search + Shopping     | How consumers find products                      |
+| Intelligence | Gemini                       | AI that powers recommendations, agents, insights |
+| Catalog      | Google Merchant Center (GMC) | The source-of-truth for product data             |
+| Ads          | Google Ads + Performance Max | Automated advertising across Google surfaces     |
+| Analytics    | GA4 + Merchant Reports       | Performance measurement                          |
 
 ### What is UCP?
 
-**Unified Commerce Protocol** is Goofre's standardized schema for normalizing commerce data from *any* source into a format that Google's stack natively understands. Think of it as:
+**Unified Commerce Protocol** is Goofre's standardized schema for normalizing commerce data from _any_ source into a format that Google's stack natively understands. Think of it as:
 
 - **For Shopify devs**: Like the Shopify REST Admin API, but platform-agnostic
 - **For WooCommerce devs**: Like the WooCommerce REST API v3, but AI-native
@@ -239,12 +238,12 @@ graph TB
 
 ### UCP Core Types
 
-| Type | Purpose | Think of it as... |
-|---|---|---|
-| `UCPProduct` | Normalized product with pricing + inventory | A "super product object" |
-| `UCPInventorySnapshot` | Point-in-time stock by location | Real-time stock checker |
-| `UCPOrderEvent` | Order lifecycle events | Webhook payloads, standardized |
-| `UCPInsight` | AI-generated commerce intelligence | "Your AI co-pilot's notes" |
+| Type                   | Purpose                                     | Think of it as...              |
+| ---------------------- | ------------------------------------------- | ------------------------------ |
+| `UCPProduct`           | Normalized product with pricing + inventory | A "super product object"       |
+| `UCPInventorySnapshot` | Point-in-time stock by location             | Real-time stock checker        |
+| `UCPOrderEvent`        | Order lifecycle events                      | Webhook payloads, standardized |
+| `UCPInsight`           | AI-generated commerce intelligence          | "Your AI co-pilot's notes"     |
 
 </details>
 
@@ -375,6 +374,7 @@ docker compose up --build
 ## 🗺️ Roadmap
 
 ### Now (v1.x)
+
 - [x] Core SwitchboardOrchestrator with UCP schema
 - [x] Google Merchant Center plugin
 - [x] Mock server for local development
@@ -382,12 +382,14 @@ docker compose up --build
 - [x] Docker Compose dev environment
 
 ### Next (v2.x)
+
 - [ ] **Multi-LLM Compatibility** — Swap between Gemini, GPT-4, Claude, and Llama as your AI backbone. Goofre orchestrates commerce; your choice of brain powers the intelligence.
 - [ ] Shopify / WooCommerce / Magento source plugins (community-built)
 - [ ] Webhook-driven real-time sync (beyond polling)
 - [ ] UCPInsight: AI-powered feed diagnostics with actionable fix suggestions
 
 ### Future (v3.x)
+
 - [ ] MCP Server protocol — expose your orchestrator as a tool for any AI agent
 - [ ] Multi-merchant tenant isolation
 - [ ] Client dashboard reference app
