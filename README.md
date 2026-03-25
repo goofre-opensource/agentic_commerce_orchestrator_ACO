@@ -84,13 +84,15 @@ These tools do not natively talk to each other. A business managing Shopify, GMC
 
 Goofre connects to the live Google Commerce Stack. You'll need these credentials when connecting real commerce accounts:
 
-| Credential                                  | Where to get it                                                                                  | Used for                                      |
-| ------------------------------------------- | ------------------------------------------------------------------------------------------------ | --------------------------------------------- |
-| **GMC Merchant ID**                         | [Google Merchant Center](https://merchants.google.com) → Settings → Business info                | Product feed sync, feed diagnostics           |
-| **Google OAuth 2.0 Client**                 | [Google Cloud Console](https://console.cloud.google.com) → APIs & Services → Credentials         | Authenticating all Google API calls           |
-| **Content API for Shopping**                | Enable in Cloud Console → Library                                                                | Read/write GMC product data                   |
-| **GA4 Measurement ID** _(optional)_         | GA4 → Admin → Data Streams                                                                       | Feeding behavioural signals into `UCPInsight` |
-| **Google Ads Developer Token** _(optional)_ | [Google Ads API Centre](https://developers.google.com/google-ads/api/docs/get-started/dev-token) | Automated campaign sync                       |
+| Credential                                   | Where to get it                                                                                  | Used for                                      |
+| -------------------------------------------- | ------------------------------------------------------------------------------------------------ | --------------------------------------------- |
+| **GMC Merchant ID**                          | [Google Merchant Center](https://merchants.google.com) → Settings → Business info                | Product feed sync, feed diagnostics           |
+| **Google OAuth 2.0 Client**                  | [Google Cloud Console](https://console.cloud.google.com) → APIs & Services → Credentials         | Authenticating all Google API calls           |
+| **Merchant API v1** _(replaces Content API)_ | Enable in Cloud Console → Library → Merchant API                                                 | Read/write GMC product and inventory data     |
+| **GA4 Measurement ID** _(optional)_          | GA4 → Admin → Data Streams                                                                       | Feeding behavioural signals into `UCPInsight` |
+| **Google Ads Developer Token** _(optional)_  | [Google Ads API Centre](https://developers.google.com/google-ads/api/docs/get-started/dev-token) | Automated campaign sync                       |
+
+> ⚠️ **Heads up:** The Content API for Shopping is **deprecated** (August 2025) and **shuts down August 18, 2026**. `GoogleMerchantPlugin` v2.0 uses the new **Merchant API v1** — [migrate now →](https://developers.google.com/merchant/api/guides/migration)
 
 > 💡 **Mock mode available** — no keys needed for local development. Real credentials are only required when connecting to live commerce accounts.
 
@@ -170,19 +172,24 @@ graph TB
         H[UCP Schema Validator<br/>Strict Type Enforcement]
     end
 
-    subgraph "UCP Protocol Output"
+    subgraph "UCP Protocol Output v1.1"
         I[UCPProduct]
         J[UCPInventorySnapshot]
         K[UCPOrderEvent]
         L[UCPInsight]
+        M2[UCPCartEvent]
+        N2[UCPFulfillmentUpdate]
+        O2[UCPReturnEvent]
     end
 
-    subgraph "Plugin SDK — goofre-connect"
-        P[goofre-connect]
+    subgraph "Developer Tools"
+        P[goofre-connect SDK]
+        Q[MCP Server]
+        R[GTINEnricher]
     end
 
     subgraph "AI Consumers"
-        M[Gemini Agent]
+        M[Gemini / Claude / Copilot]
         N[Client Dashboard]
         O[Your Application]
     end
@@ -192,24 +199,29 @@ graph TB
     C --> E --> F
     D --> F
     F --> H
-    H --> I & J & K & L
-    I & J & K & L --> P
-    P --> M & N & O
+    H --> I & J & K & L & M2 & N2 & O2
+    I & J & K & L & M2 & N2 & O2 --> P
+    P --> Q --> M
+    P --> N & O
+    R --> I
 
     style F fill:#4285F4,color:#fff
     style H fill:#EA4335,color:#fff
     style L fill:#34A853,color:#fff
-    style P fill:#FBBC04,color:#000
+    style Q fill:#FBBC04,color:#000
+    style M2 fill:#34A853,color:#fff
 ```
 
 ### Core Components
 
-| Component                   | Role                                                                                                                                                                |
-| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **SwitchboardOrchestrator** | Central event bus. All data flows through here. Manages plugin registry, validates UCP schemas, emits typed events.                                                 |
-| **PosSyncEngine**           | Dedicated POS inventory synchronization. Handles real-time stock updates with conflict resolution and queue deduplication.                                          |
-| **WebhookProcessor**        | Validates HMAC signatures, parses vendor-specific payloads, dispatches to the Switchboard. Supports any signature algorithm.                                        |
-| **UCP Schema Layer**        | TypeScript interfaces + runtime validators for `UCPProduct`, `UCPInventorySnapshot`, `UCPOrderEvent`, `UCPInsight`. The contract between raw data and AI consumers. |
+| Component                   | Role                                                                                                                                                                                                                                                                                |
+| --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **SwitchboardOrchestrator** | Central event bus. All data flows through here. Manages plugin registry, validates UCP schemas, emits typed events for `product`, `inventory`, `order`, `cart`, `fulfillment`.                                                                                                      |
+| **PosSyncEngine**           | Dedicated POS inventory synchronization. Handles real-time stock updates with conflict resolution and queue deduplication.                                                                                                                                                          |
+| **WebhookProcessor**        | Validates HMAC signatures, parses vendor-specific payloads, dispatches to the Switchboard. Supports any signature algorithm.                                                                                                                                                        |
+| **UCP Schema v1.1**         | TypeScript interfaces for `UCPProduct`, `UCPInventorySnapshot`, `UCPOrderEvent`, `UCPCartEvent`, `UCPFulfillmentUpdate`, `UCPReturnEvent`, `UCPInsight`. Now includes `channel`, `loyaltyProgram`, and `ucpEligibility` fields aligned with GMC Merchant API v1 and UCP March 2026. |
+| **GTINEnricher**            | GS1 GTIN-8/12/13/14 validation + checksum. Invalid GTINs cause GMC feed disapprovals — enrich before syncing.                                                                                                                                                                       |
+| **MCP Server** _(new)_      | Expose your orchestrator as 4 callable tools for Claude, Copilot, Gemini, and any MCP-compatible AI. See `packages/mcp-server`.                                                                                                                                                     |
 
 ---
 
