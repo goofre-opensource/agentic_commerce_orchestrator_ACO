@@ -136,10 +136,11 @@ export function enrichProductWithGTIN(product: UCPProduct): UCPProduct {
   }
 
   // Invalid GTIN — remove it and tag the product for feed quality review
+  // (exactOptionalPropertyTypes requires omission rather than explicit undefined)
   const invalidGtinTag = `gtin_invalid:${result.error ?? 'unknown'}`;
+  const { gtin: _removed, ...productWithoutGtin } = product;
   return {
-    ...product,
-    gtin: undefined,
+    ...productWithoutGtin,
     tags: [...(product.tags ?? []), invalidGtinTag],
   };
 }

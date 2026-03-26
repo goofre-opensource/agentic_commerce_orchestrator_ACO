@@ -9,24 +9,36 @@
 
 // UCP Schema Types — The Protocol Contract
 export type {
-    UCPProduct,
-    UCPProductVariant,
-    UCPInventorySnapshot,
-    UCPInventoryLevel,
-    UCPOrderEvent,
-    UCPOrderEventType,
-    UCPOrderLineItem,
-    UCPInsight,
-    UCPInsightType,
-    UCPInsightSeverity,
-    UCPInsightRecommendedAction,
-    UCPMonetaryValue,
-    UCPTimestamp,
-    UCPMetadata,
-    UCPEvent,
-    UCPEventType,
-    UCPEventEnvelope,
-    IGoofRePlugin,
+  UCPProduct,
+  UCPProductVariant,
+  UCPInventorySnapshot,
+  UCPInventoryLevel,
+  UCPOrderEvent,
+  UCPOrderEventType,
+  UCPOrderLineItem,
+  UCPInsight,
+  UCPInsightType,
+  UCPInsightSeverity,
+  UCPInsightRecommendedAction,
+  UCPMonetaryValue,
+  UCPTimestamp,
+  UCPMetadata,
+  UCPEvent,
+  UCPEventType,
+  UCPEventEnvelope,
+  IGoofRePlugin,
+  // UCP v1.1 — Cart, Fulfillment, Returns, Loyalty
+  UCPCartEvent,
+  UCPCartLineItem,
+  UCPCartAction,
+  UCPFulfillmentUpdate,
+  UCPFulfillmentStatus,
+  UCPReturnEvent,
+  UCPReturnReason,
+  UCPReturnStatus,
+  UCPLoyaltyProgram,
+  UCPSustainability,
+  UCPCheckoutEligibility,
 } from './types/ucp.schema.js';
 
 // Orchestration Engine
@@ -35,15 +47,12 @@ export type { OrchestratorConfig, RawEvent } from './orchestrator/SwitchboardOrc
 
 // POS Sync Engine
 export { PosSyncEngine } from './orchestrator/PosSyncEngine.js';
-export type {
-    PosSyncEngineConfig,
-    PosRawInventoryEvent,
-} from './orchestrator/PosSyncEngine.js';
+export type { PosSyncEngineConfig, PosRawInventoryEvent } from './orchestrator/PosSyncEngine.js';
 
 // Webhook Processor
 export { WebhookProcessor } from './webhooks/WebhookProcessor.js';
 export type {
-    WebhookProcessorConfig,
-    WebhookValidationResult,
-    ParsedWebhookPayload,
+  WebhookProcessorConfig,
+  WebhookValidationResult,
+  ParsedWebhookPayload,
 } from './webhooks/WebhookProcessor.js';
