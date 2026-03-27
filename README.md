@@ -20,9 +20,9 @@ Bypass platform lock-in. Orchestrate Google's commerce stack directly.</p>
 
 Launch your independent orchestrator in under two minutes:
 
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template?template=https://github.com/goofre-opensource/goofre)
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/goofre-opensource/goofre)
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/goofre-opensource/goofre)
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template?template=https://github.com/Goofre-Agentic-Commerce-Orchestrator/agentic_commerce_orchestrator_ACO)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Goofre-Agentic-Commerce-Orchestrator/agentic_commerce_orchestrator_ACO)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/Goofre-Agentic-Commerce-Orchestrator/agentic_commerce_orchestrator_ACO)
 
 </div>
 
@@ -255,6 +255,9 @@ graph TB
 | `UCPProduct`           | Normalized product with pricing + inventory | A "super product object"       |
 | `UCPInventorySnapshot` | Point-in-time stock by location             | Real-time stock checker        |
 | `UCPOrderEvent`        | Order lifecycle events                      | Webhook payloads, standardized |
+| `UCPCartEvent`         | Cart add/remove/abandon signals             | Abandoned cart trigger         |
+| `UCPFulfillmentUpdate` | Shipping & delivery status changes          | Fulfilment webhook             |
+| `UCPReturnEvent`       | Return & refund lifecycle                   | Returns handler                |
 | `UCPInsight`           | AI-generated commerce intelligence          | "Your AI co-pilot's notes"     |
 
 </details>
@@ -314,12 +317,14 @@ agentic_commerce_orchestrator_ACO/
 ├── packages/
 │   ├── core-engine/          # @goofre/core-engine — The orchestration heart
 │   │   └── src/
-│   │       ├── types/        # UCP schema type definitions
+│   │       ├── types/        # UCP schema v1.1 type definitions
 │   │       ├── orchestrator/ # SwitchboardOrchestrator + PosSyncEngine
 │   │       └── webhooks/     # WebhookProcessor
 │   ├── plugins/              # @goofre/plugins — Reference integrations
 │   │   └── src/
-│   │       └── google-merchant/ # Google Merchant Center plugin
+│   │       ├── google-merchant/   # Google Merchant Center plugin
+│   │       └── shopify-catalog/   # ShopifyCatalogPlugin — Shopify → UCP sync
+│   ├── mcp-server/           # @goofre/mcp-server — Expose orchestrator as AI tools
 │   └── mock-server/          # @goofre/mock-server — Hackathon/CI mock APIs
 ├── tests/integration/        # End-to-end integration tests
 └── docker-compose.yml        # Single-command local dev environment
@@ -385,29 +390,33 @@ docker compose up --build
 
 ## 🗺️ Roadmap
 
-### Now (v1.x)
+### Now (v1.x) — Shipped ✅
 
-- [x] Core SwitchboardOrchestrator with UCP schema
+- [x] Core SwitchboardOrchestrator with UCP schema v1.1
 - [x] Google Merchant Center plugin
+- [x] **ShopifyCatalogPlugin** — Shopify Admin API → UCPProduct sync (variants, metafields, GTIN, loyalty)
+- [x] GTINEnricher — GS1 GTIN-8/12/13/14 validation + checksum
+- [x] UCP v1.1 types — `UCPCartEvent`, `UCPFulfillmentUpdate`, `UCPReturnEvent`
 - [x] Mock server for local development
 - [x] `npx create-goofre-ucp` scaffolding
 - [x] Docker Compose dev environment
+- [x] **MCP Server** — expose your orchestrator as 4 callable AI tools for Claude, Copilot, Gemini
 
 ### Next (v2.x)
 
-- [ ] **Multi-LLM Compatibility** — Swap between Gemini, GPT-4, Claude, and Llama as your AI backbone. Goofre orchestrates commerce; your choice of brain powers the intelligence.
-- [ ] Shopify / WooCommerce / Magento source plugins (community-built)
+- [ ] **Multi-LLM Compatibility** — Swap between Gemini, GPT-4, Claude, and Llama as your AI backbone
+- [ ] WooCommerce / Magento source plugins (community-built)
 - [ ] Webhook-driven real-time sync (beyond polling)
 - [ ] UCPInsight: AI-powered feed diagnostics with actionable fix suggestions
+- [ ] Multi-merchant tenant isolation
 
 ### Future (v3.x)
 
-- [ ] MCP Server protocol — expose your orchestrator as a tool for any AI agent
-- [ ] Multi-merchant tenant isolation
 - [ ] Client dashboard reference app
 - [ ] Voice agent integration (Gemini Live)
+- [ ] Goofre Lite cloud tier — 1-click deploy with managed token metering
 
-Want to influence the roadmap? [Open a feature request →](https://github.com/goofre-opensource/agentic_commerce_orchestrator_ACO/issues/new?template=feature_request.yml)
+Want to influence the roadmap? [Open a feature request →](https://github.com/Goofre-Agentic-Commerce-Orchestrator/agentic_commerce_orchestrator_ACO/issues/new?template=feature_request.yml)
 
 ---
 
