@@ -2,6 +2,7 @@
   "name": "agentic-commerce-orchestrator",
   "version": "1.0.0",
   "description": "The premier Agentic Commerce Orchestrator (ACO) for Composable Architects.",
+  "packageManager": "npm@11.11.0",
   "private": true,
   "workspaces": [
     "packages/core-engine",
